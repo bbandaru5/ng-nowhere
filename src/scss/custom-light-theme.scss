@@ -1,0 +1,211 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+
+$mat-light-cust: (
+  50: #D6CCC1,
+  100: #D6CCC1,
+  200: #D6CCC1,
+  300: #D6CCC1,
+  400: #D6CCC1,
+  500: #D6CCC1,
+  600: #D6CCC1,
+  700: #D6CCC1,
+  800: #D6CCC1,
+  900: #D6CCC1,
+  A100: #D6CCC1,
+  A200: #D6CCC1,
+  A400: #D6CCC1,
+  A700: #D6CCC1,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-light-accent-cust: (
+  50: #E0D9D2,
+  100: #E0D9D2,
+  200: #E0D9D2,
+  300: #E0D9D2,
+  400: #E0D9D2,
+  500: #E0D9D2,
+  600: #E0D9D2,
+  700: #E0D9D2,
+  800: #E0D9D2,
+  900: #E0D9D2,
+  A100: #E0D9D2,
+  A200: #E0D9D2,
+  A400: #E0D9D2,
+  A700: #E0D9D2,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+); 
+$mat-light-warn-cust: (
+  50: #F47036,
+  100: #F47036,
+  200: #F47036,
+  300: #F47036,
+  400: #F47036,
+  500: #F47036,
+  600: #F47036,
+  700: #F47036,
+  800: #F47036,
+  900: #F47036,
+  A100: #F47036,
+  A200: #F47036,
+  A400: #F47036,
+  A700: #F47036,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+$mat-dark-text-primary: (
+  50: #C9C9CA,
+  100: #C9C9CA,
+  200: #C9C9CA,
+  300: #C9C9CA,
+  400: #C9C9CA,
+  500: #C9C9CA,
+  600: #C9C9CA,
+  700: #C9C9CA,
+  800: #C9C9CA,
+  900: #C9C9CA,
+  A100: #C9C9CA,
+  A200: #C9C9CA,
+  A400: #C9C9CA,
+  A700: #C9C9CA,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-light-text-primary: (
+  50: #383635,
+  100: #383635,
+  200: #383635,
+  300: #383635,
+  400: #383635,
+  500: #383635,
+  600: #383635,
+  700: #383635,
+  800: #383635,
+  900: #383635,
+  A100: #383635,
+  A200: #383635,
+  A400: #383635,
+  A700: #383635,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-light-text-secondary: (
+  50: #706D69,
+  100: #706D69,
+  200: #706D69,
+  300: #706D69,
+  400: #706D69,
+  500: #706D69,
+  600: #706D69,
+  700: #706D69,
+  800: #706D69,
+  900: #706D69,
+  A100: #706D69,
+  A200: #706D69,
+  A400: #706D69,
+  A700: #706D69,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$custom-theme-light-primary: mat-palette($mat-light-cust);
+$custom-theme-light-accent: mat-palette($mat-light-accent-cust, A200, A100, A400);
+$custom-theme-light-warn: mat-palette($mat-light-warn-cust);
+
+$custom-theme-text-light-primary: mat-palette($mat-light-text-primary);
+$custom-theme-text-light-accent: mat-palette($mat-light-text-secondary, A200, A100, A400);
+$custom-theme-text-light-warn: mat-palette($mat-light-warn-cust);
+
+$custom-light-theme: mat-light-theme($custom-theme-light-primary, $custom-theme-light-accent, $custom-theme-light-warn);
+$custom-text-light-theme: mat-light-theme($custom-theme-text-light-primary, $custom-theme-text-light-accent, $custom-theme-text-light-warn);
+
+@include angular-material-theme($custom-light-theme);
+@include angular-material-theme($custom-text-light-theme);

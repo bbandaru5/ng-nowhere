@@ -1,0 +1,31 @@
+@import "scss/margin.scss";
+@import "scss/global.scss";
+@import "scss/colours.scss";
+@import "scss/custom-light-theme.scss";
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import "app/app.component";
+@import "app/nav-bar/nav-bar.component";
+@import "app/card/card.component";
+@import "scss/custom-dark-theme.scss";
+@mixin custom-components-theme($theme,$text-theme) {
+  @include app-theme($theme, $text-theme);
+  @include nav-theme($theme, $text-theme);
+  @include card-theme($theme, $text-theme)
+}
+
+.light-theme {
+  @include angular-material-theme($custom-light-theme);
+  @include custom-components-theme($custom-light-theme,$custom-text-light-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($custom-dark-theme);
+  @include custom-components-theme($custom-dark-theme,$custom-text-dark-theme);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

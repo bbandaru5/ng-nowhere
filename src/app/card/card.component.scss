@@ -1,0 +1,78 @@
+@mixin card-theme($theme, $text-theme) {
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+
+    $text-primary: map-get($text-theme, primary);
+    $text-warn: map-get($text-theme, warn);
+    $text-accent: map-get($text-theme, accent);
+    $text-foreground: map-get($text-theme, foreground);
+.audio-card-2{
+    width: 169px;
+    height: 169px;
+    background: mat-color($accent, darker);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+    border-radius: 25px;
+}
+.audio-card-1{
+    width: 169px;
+    height: 169px;
+    background: mat-color($accent, darker);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+    border-radius: 25px;
+}
+.text-card2{
+    width: 374px;
+    height: 471px;
+    background: mat-color($accent, darker);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+    border-radius: 25px;
+}
+
+.card2 .text-card2 {
+    -webkit-transition: all 0.25s ease; /* Safari and Chrome */
+  	-moz-transition: all 0.25s ease; /* Firefox */
+  	-o-transition: all 0.25s ease; /* IE 9 */
+  	-ms-transition: all 0.25s ease; /* Opera */
+  	transition: all 0.25s ease;
+}
+.card2:hover .text-card2 {
+    -webkit-transform:scale(0.99); /* Safari and Chrome */
+    -moz-transform:scale(0.99); /* Firefox */
+    -ms-transform:scale(0.99); /* IE 9 */
+    -o-transform:scale(0.99); /* Opera */
+     transform:scale(0.99);
+     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+.audio-card-2 {
+    -webkit-transition: all 0.25s ease; /* Safari and Chrome */
+  	-moz-transition: all 0.25s ease; /* Firefox */
+  	-o-transition: all 0.25s ease; /* IE 9 */
+  	-ms-transition: all 0.25s ease; /* Opera */
+  	transition: all 0.25s ease;
+}
+.audio-card-2:hover {
+    -webkit-transform:scale(0.99); /* Safari and Chrome */
+    -moz-transform:scale(0.99); /* Firefox */
+    -ms-transform:scale(0.99); /* IE 9 */
+    -o-transform:scale(0.99); /* Opera */
+     transform:scale(0.99);
+     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+.card2 .audio-card-1 {
+    -webkit-transition: all 0.25s ease; /* Safari and Chrome */
+  	-moz-transition: all 0.25s ease; /* Firefox */
+  	-o-transition: all 0.25s ease; /* IE 9 */
+  	-ms-transition: all 0.25s ease; /* Opera */
+  	transition: all 0.25s ease;
+}
+.audio-card-1:hover {
+    -webkit-transform:scale(0.99); /* Safari and Chrome */
+    -moz-transform:scale(0.99); /* Firefox */
+    -ms-transform:scale(0.99); /* IE 9 */
+    -o-transform:scale(0.99); /* Opera */
+     transform:scale(0.99);
+     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+}

@@ -1,0 +1,176 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+$mat-dark-cust: (
+  50: #0B0B0B,
+  100: #0B0B0B,
+  200: #0B0B0B,
+  300: #0B0B0B,
+  400: #0B0B0B,
+  500: #0B0B0B,
+  600: #0B0B0B,
+  700: #0B0B0B,
+  800: #0B0B0B,
+  900: #0B0B0B,
+  A100: #0B0B0B,
+  A200: #0B0B0B,
+  A400: #0B0B0B,
+  A700: #0B0B0B,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-dark-accent-cust: (
+  50: #26272B,
+  100: #26272B,
+  200: #26272B,
+  300: #26272B,
+  400: #26272B,
+  500: #26272B,
+  600: #26272B,
+  700: #26272B,
+  800: #26272B,
+  900: #26272B,
+  A100: #26272B,
+  A200: #26272B,
+  A400: #26272B,
+  A700: #26272B,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-dark-warn-cust: (
+  50: #FF923D,
+  100: #FF923D,
+  200: #FF923D,
+  300: #FF923D,
+  400: #FF923D,
+  500: #FF923D,
+  600: #FF923D,
+  700: #FF923D,
+  800: #FF923D,
+  900: #FF923D,
+  A100: #FF923D,
+  A200: #FF923D,
+  A400: #FF923D,
+  A700: #FF923D,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-dark-text-primary: (
+  50: #C9C9CA,
+  100: #C9C9CA,
+  200: #C9C9CA,
+  300: #C9C9CA,
+  400: #C9C9CA,
+  500: #C9C9CA,
+  600: #C9C9CA,
+  700: #C9C9CA,
+  800: #C9C9CA,
+  900: #C9C9CA,
+  A100: #C9C9CA,
+  A200: #C9C9CA,
+  A400: #C9C9CA,
+  A700: #C9C9CA,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$mat-dark-text-secondary: (
+  50: #929395,
+  100: #929395,
+  200: #929395,
+  300: #929395,
+  400: #929395,
+  500: #929395,
+  600: #929395,
+  700: #929395,
+  800: #929395,
+  900: #929395,
+  A100: #929395,
+  A200: #929395,
+  A400: #929395,
+  A700: #929395,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$custom-theme-dark-primary: mat-palette($mat-dark-cust);
+$custom-theme-dark-accent: mat-palette($mat-dark-accent-cust, A200, A100, A400);
+$custom-theme-dark-warn: mat-palette($mat-dark-warn-cust);
+
+$custom-theme-text-dark-primary: mat-palette($mat-dark-text-primary);
+$custom-theme-text-dark-accent: mat-palette($mat-dark-text-secondary, A200, A100, A400);
+$custom-theme-text-dark-warn: mat-palette($mat-dark-warn-cust);
+
+$custom-dark-theme: mat-light-theme($custom-theme-dark-primary, $custom-theme-dark-accent, $custom-theme-dark-warn);
+$custom-text-dark-theme: mat-light-theme($custom-theme-text-dark-primary, $custom-theme-text-dark-accent, $custom-theme-text-dark-warn);
+
+@include angular-material-theme($custom-dark-theme);
+@include angular-material-theme($custom-text-dark-theme);

@@ -1,0 +1,70 @@
+@mixin nav-theme($theme, $text-theme) {
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+
+    $text-primary: map-get($text-theme, primary);
+    $text-warn: map-get($text-theme, warn);
+    $text-accent: map-get($text-theme, accent);
+    $text-foreground: map-get($text-theme, foreground);
+
+    .mat-cust-dark-color{
+        color: #F47036;
+    }
+    .mat-cust-light-color{
+        color: #0B0B0B;
+    }
+    .height{
+        width: 102px;
+        height: auto;
+    }
+    .listen:hover{
+        text-decoration: underline !important;
+    }
+    .confess:hover{
+        text-decoration: underline !important;
+    }
+    .listen{
+        color: mat-color($text-primary, darker) !important;
+        position: relative;
+        font-weight: 500;
+        margin-top: 1.5px;
+    }
+    .confess{
+        color: mat-color($text-primary, darker)!important;
+        position: relative;
+        font-weight: 500;
+        margin-top: 1.5px;
+    }
+    .selected{
+        color: #F47036 !important;
+    }
+    .hear-image{
+        width: 11.25px;
+        height: 12.99px;
+        position: absolute;
+        top: -2px;
+    }
+    .confess-image{
+        width: 17px;
+        height: 14px;
+        position: absolute;
+        top: -2px;
+    }
+    .nav-content{
+        height: 60px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 100;
+    }
+    .nav-back-dark-grad{
+        background: linear-gradient(180deg, mat-color($primary, darker) 42.19%, #00000000);
+    }
+    .nav-back-light-grad{
+        background: linear-gradient(180deg, mat-color($primary, darker) 42.19%,#D5CBC000);
+
+    }
+}
