@@ -29,7 +29,36 @@
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
     border-radius: 25px;
 }
-
+.mar-left{
+    margin-left: 36px;
+}
+@media only screen and (max-width: 380px) {
+    /* For mobile phones: */
+    .mar-left{
+        margin-left: 16px;
+    }
+    .audio-card-2{
+        width: 158px;
+        height: 158px;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+    .audio-card-1{
+        width: 158px;
+        height: 158px;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+    .text-card2{
+        width: 332px;
+        height: 471px;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+  }
 .card2 .text-card2 {
     -webkit-transition: all 0.25s ease; /* Safari and Chrome */
   	-moz-transition: all 0.25s ease; /* Firefox */

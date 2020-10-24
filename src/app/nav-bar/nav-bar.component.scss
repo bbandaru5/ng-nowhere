@@ -8,7 +8,15 @@
     $text-warn: map-get($text-theme, warn);
     $text-accent: map-get($text-theme, accent);
     $text-foreground: map-get($text-theme, foreground);
-
+    .vis{
+        visibility: visible;
+    }
+    @media only screen and (max-width: 420px) {
+        /* For mobile phones: */
+        .vis{
+            visibility:hidden
+        }
+    }
     .mat-cust-dark-color{
         color: #F47036;
     }

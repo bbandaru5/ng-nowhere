@@ -1,6 +1,6 @@
 <nav class="nav-content" [ngClass]="{'nav-back-dark-grad':isDarkMode, 'nav-back-light-grad': !isDarkMode}">
     <div class="d-flex justify-content-between mt2 mb1">
-        <img [src]="navLogoUrl" class="pointer height ml2" />
+        <img [src]="navLogoUrl" class="pointer height ml2 vis" />
         <div class="d-flex">
             <a routerLink="/hear" routerLinkActive="active" class="pointer listen mr-25 mb-0" [ngClass]="{selected: selection === 'hear'}" (click)="hearOnClick()">
                 <span>Listen</span>
