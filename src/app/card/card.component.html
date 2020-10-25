@@ -21,6 +21,14 @@
                 <a class="float font-14 fw-600 theme-text-color-prim elps pointer" matTooltip="{{card.userId}}"
                     [matTooltipShowDelay]="500" [matTooltipPosition]="position.value"
                     [matTooltipHideDelay]="1000"> {{card.userId}}</a>  
+
+                <h2 class="font-merri  theme-text-color-prim pr2 fw-600 opacity-90" style="text-align: initial;padding-left: 20px; padding-top: 23px;">{{card.title}}</h2>
+
+                <p class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;">{{card.desc}}</p>
+                <div class="d-felx justify-content-end mr2 pb1" style="text-align: end;">
+                    <mat-icon class="theme-text-color-sec pointer mr1 mat-reply"> reply</mat-icon>
+                    <mat-icon class="theme-text-color-sec pointer mr1 mat-campaign"> campaign</mat-icon>
+                </div>
             </div>
         </div>
     </div>
