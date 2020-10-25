@@ -8,10 +8,32 @@
     $text-warn: map-get($text-theme, warn);
     $text-accent: map-get($text-theme, accent);
     $text-foreground: map-get($text-theme, foreground);
+
     $font-size: 14px;
-    $line-height: 1.4;
+    $line-height: 1.5;
     $lines-to-show: 1;
 
+    $card-lines-to-show: 50;
+.card2-content{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.card-elps {
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    max-height: $font-size*$line-height*$card-lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $card-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+}  
 .mat-tooltip{
     font-size: 10px !important;
     text-align: initial !important;
