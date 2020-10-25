@@ -8,6 +8,29 @@
     $text-warn: map-get($text-theme, warn);
     $text-accent: map-get($text-theme, accent);
     $text-foreground: map-get($text-theme, foreground);
+    $font-size: 14px;
+    $line-height: 1.4;
+    $lines-to-show: 1;
+
+.mat-tooltip{
+    font-size: 10px !important;
+    text-align: initial !important;
+    align-items: initial !important;
+}
+.elps {
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    height: $font-size*$line-height*$lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+    }    
 .audio-card-2{
     width: 169px;
     height: 169px;
@@ -29,8 +52,24 @@
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
     border-radius: 25px;
 }
+.theme-text-color-prim{
+    color: mat-color($text-primary, darker) !important;
+}
+.theme-text-color-sec{
+    color: mat-color($text-accent, darker) !important;
+}
 .mar-left{
     margin-left: 36px;
+}
+.float{
+    position: absolute;
+    top: -24px;
+    // opacity: 0.85;
+    left: 16px;
+}
+.rel{
+    position: relative;
+    display: block;
 }
 @media only screen and (max-width: 380px) {
     /* For mobile phones: */

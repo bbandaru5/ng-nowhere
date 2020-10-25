@@ -161,13 +161,45 @@ $mat-dark-text-secondary: (
     A700: black,
   )
 );
+$mat-dark-text-warn-cust: (
+  50: #C9C9CA,
+  100: #C9C9CA,
+  200: #C9C9CA,
+  300: #C9C9CA,
+  400: #C9C9CA,
+  500: #C9C9CA,
+  600: #C9C9CA,
+  700: #C9C9CA,
+  800: #C9C9CA,
+  900: #C9C9CA,
+  A100: #C9C9CA,
+  A200: #C9C9CA,
+  A400: #C9C9CA,
+  A700: #C9C9CA,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
 $custom-theme-dark-primary: mat-palette($mat-dark-cust);
 $custom-theme-dark-accent: mat-palette($mat-dark-accent-cust, A200, A100, A400);
 $custom-theme-dark-warn: mat-palette($mat-dark-warn-cust);
 
 $custom-theme-text-dark-primary: mat-palette($mat-dark-text-primary);
 $custom-theme-text-dark-accent: mat-palette($mat-dark-text-secondary, A200, A100, A400);
-$custom-theme-text-dark-warn: mat-palette($mat-dark-warn-cust);
+$custom-theme-text-dark-warn: mat-palette($mat-dark-text-warn-cust);
 
 $custom-dark-theme: mat-light-theme($custom-theme-dark-primary, $custom-theme-dark-accent, $custom-theme-dark-warn);
 $custom-text-dark-theme: mat-light-theme($custom-theme-text-dark-primary, $custom-theme-text-dark-accent, $custom-theme-text-dark-warn);

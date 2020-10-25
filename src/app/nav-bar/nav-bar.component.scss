@@ -23,6 +23,10 @@
     .mat-cust-light-color{
         color: #0B0B0B;
     }
+    .height-logo{
+        width: 23px;
+        height: auto;
+    }
     .height{
         width: 102px;
         height: auto;
@@ -34,13 +38,13 @@
         text-decoration: underline !important;
     }
     .listen{
-        color: mat-color($text-primary, darker) !important;
+        color: mat-color($text-warn, darker) !important;
         position: relative;
         font-weight: 500;
         margin-top: 1.5px;
     }
     .confess{
-        color: mat-color($text-primary, darker)!important;
+        color: mat-color($text-warn, darker)!important;
         position: relative;
         font-weight: 500;
         margin-top: 1.5px;
@@ -69,7 +73,7 @@
         z-index: 100;
     }
     .nav-back-dark-grad{
-        background: linear-gradient(180deg, mat-color($primary, darker) 42.19%, #00000000);
+        background: linear-gradient(180deg, mat-color($primary, darker) 42.19%, #0b0b0b00);
     }
     .nav-back-light-grad{
         background: linear-gradient(180deg, mat-color($primary, darker) 42.19%,#D5CBC000);

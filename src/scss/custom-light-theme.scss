@@ -196,13 +196,46 @@ $mat-light-text-secondary: (
     A700: black,
   )
 );
+
+$mat-light-text-warn-cust: (
+  50: #0B0B0B,
+  100: #0B0B0B,
+  200: #0B0B0B,
+  300: #0B0B0B,
+  400: #0B0B0B,
+  500: #0B0B0B,
+  600: #0B0B0B,
+  700: #0B0B0B,
+  800: #0B0B0B,
+  900: #0B0B0B,
+  A100: #0B0B0B,
+  A200: #0B0B0B,
+  A400: #0B0B0B,
+  A700: #0B0B0B,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: black,
+    600: black,
+    700: black,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
 $custom-theme-light-primary: mat-palette($mat-light-cust);
 $custom-theme-light-accent: mat-palette($mat-light-accent-cust, A200, A100, A400);
 $custom-theme-light-warn: mat-palette($mat-light-warn-cust);
 
 $custom-theme-text-light-primary: mat-palette($mat-light-text-primary);
 $custom-theme-text-light-accent: mat-palette($mat-light-text-secondary, A200, A100, A400);
-$custom-theme-text-light-warn: mat-palette($mat-light-warn-cust);
+$custom-theme-text-light-warn: mat-palette($mat-light-text-warn-cust);
 
 $custom-light-theme: mat-light-theme($custom-theme-light-primary, $custom-theme-light-accent, $custom-theme-light-warn);
 $custom-text-light-theme: mat-light-theme($custom-theme-text-light-primary, $custom-theme-text-light-accent, $custom-theme-text-light-warn);
