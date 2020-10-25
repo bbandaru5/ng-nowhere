@@ -12,6 +12,10 @@ import { CardsGridComponent } from './cards-grid/cards-grid.component'
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ThemingService} from './theming.service';
+import {WebAudioModule} from '@ng-web-apis/audio';
+import { FormsModule } from '@angular/forms';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +29,18 @@ import {ThemingService} from './theming.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    WebAudioModule,
     MaterialModule,
     NgxMasonryModule,
-    BrowserAnimationsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    BrowserModule.withServerTransition({appId: 'nowhere'}),
   ],
-  providers: [ThemingService],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: PathLocationStrategy,
+    },
+    ThemingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

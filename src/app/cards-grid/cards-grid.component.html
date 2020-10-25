@@ -1,21 +1,65 @@
-<!-- <div class="cards"> 
-
-    <app-card class="card" *ngFor = "let card of cards" [type]="card.type"></app-card>
-</div> -->
-<!-- <mat-grid-list >
-    <app-card *ngFor = "let card of cards" [type]="card.type"></app-card>
- </mat-grid-list> -->
-
-<!-- <ngx-masonry>
-    <div ngxMasonryItem class="masonry-item" *ngFor="let card of cards">
-     {{card.type}}
-   </div>
-  </ngx-masonry> -->
-  
-<div class="main">
+<!-- <div class="main">
+    
     <ngx-masonry class="ngx-masonry" [options]="myOptions"> 
         <app-card ngxMasonryItem class="masonry-item" 
         *ngFor = "let card of cards" [type]="card.type" [card]="card">
         </app-card>
     </ngx-masonry>
-</div>
+</div> -->
+<button *ngIf="!started; else graph" (click)="start()">Start AudioContext</button>
+
+<ng-template #graph>
+   
+    <section>
+        <h1>Source</h1>
+
+        <p>
+            <label>
+                <input
+                    type="radio"
+                    value="buffer"
+                    name="source"
+                    [(ngModel)]="selectedSource"
+                />
+                AudioBufferSourceNode
+            </label>
+        </p>
+        
+        <ng-container [ngSwitch]="selectedSource">
+            <ng-container *ngSwitchCase="'buffer'">
+                <button
+                    *ngFor="let _ of buffers"
+                    #source="AudioNode"
+                    waAudioBufferSourceNode
+                    buffer="assets/mp3/sample.mp3"
+                    [loop]="true"
+                    (click)="onClick(source, $event.target)"
+                >
+                    Play
+                    <ng-container
+                        waAnalyserNode
+                        (timeByte$)="onTimeDomain($event, canvas)"
+                    >
+                        <ng-container [waOutput]="chain || fallback"></ng-container>
+                    </ng-container>
+                </button>
+            </ng-container>
+            <audio
+                *ngSwitchCase="'media'"
+                waMediaElementAudioSourceNode
+                src="assets/mp3/sample.mp3"
+                loop
+                controls
+            >
+                <ng-container waAnalyserNode (timeByte$)="onTimeDomain($event, canvas)">
+                    <ng-container [waOutput]="chain || fallback"></ng-container>
+                </ng-container>
+            </audio>
+            
+        </ng-container>
+
+        <p>
+            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode></canvas>
+        </p>
+    </section>
+</ng-template>
