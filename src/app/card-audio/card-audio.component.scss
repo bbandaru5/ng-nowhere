@@ -1,0 +1,94 @@
+@mixin card-audio($theme, $text-theme) {
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+
+    $text-primary: map-get($text-theme, primary);
+    $text-warn: map-get($text-theme, warn);
+    $text-accent: map-get($text-theme, accent);
+    $text-foreground: map-get($text-theme, foreground);
+
+    $font-size: 14px;
+    $line-height: 1.4;
+    $card-lines-to-show: 5;
+    $header-lines-to-show: 2;
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    .next{
+        padding-top: 55px;
+        cursor: pointer;
+        display: inline;
+    }
+    .card-elpis{
+        width: 120% !important;
+    }
+    .header-elpis{
+        width: 120% !important;
+    }
+}    
+@media only screen and (min-width: 500px) {
+    /* For mobile phones: */
+    .next{
+        padding-top: 55px;
+        cursor: pointer;
+        display: none;
+    }
+}   
+.text-content{
+    padding-top:18px
+}
+.text-content:hover{
+    padding-top:18px;
+    .next{
+        padding-top: 55px;
+        cursor: pointer;
+        display: inline;
+    }
+    .card-elpis{
+        width: 120%;;
+    }
+    .header-elpis{
+        width: 120%;;
+    }
+}
+.theme-text-color-prim{
+    color: mat-color($text-primary, darker) !important;
+}
+.theme-text-color-sec{
+    color: mat-color($text-accent, darker) !important;
+}
+.header-elpis{
+    font-weight: 600;
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    max-height: $font-size*$line-height*$header-lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $card-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+}
+.card-elpis{
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    max-height: $font-size*$line-height*$card-lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $card-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+}  
+.back-color{
+    border-radius: 25px;
+    background: #f47037b5;
+}
+}

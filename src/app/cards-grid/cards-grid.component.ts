@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { AUDIO_CONTEXT } from '@ng-web-apis/audio';
 import { NgxMasonryComponent, NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
@@ -36,12 +35,8 @@ export class CardsGridComponent implements OnInit {
     gutter: 36,
     fitWidth:true,
   };
-  constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.context.resume();
-      // after the order of items has changed
-  // this.masonry.reloadItems();
-  // this.masonry.layout();
   }
 }

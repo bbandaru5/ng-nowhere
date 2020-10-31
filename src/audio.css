@@ -1,4 +1,4 @@
-/* Web Audio demo specific */
+/* Web Audio demo specific
 main {
     flex-wrap: wrap;
     align-content: flex-start;
@@ -24,7 +24,6 @@ section {
     margin: 5px;
     padding: 1px 10px 10px;
     box-sizing: border-box;
-    background: whitesmoke;
     border-radius: 8px;
 }
 
@@ -86,4 +85,4 @@ legend {
 
 *[waConvolverNode] {
     background: aquamarine;
-}
+} */

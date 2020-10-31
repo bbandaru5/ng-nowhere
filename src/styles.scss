@@ -10,10 +10,12 @@
 @import "app/nav-bar/nav-bar.component";
 @import "app/card/card.component";
 @import "scss/custom-dark-theme.scss";
+@import "app/card-audio/card-audio.component";
 @mixin custom-components-theme($theme,$text-theme) {
   @include app-theme($theme, $text-theme);
   @include nav-theme($theme, $text-theme);
-  @include card-theme($theme, $text-theme)
+  @include card-theme($theme, $text-theme);
+  @include card-audio($theme, $text-theme);
 }
 
 .light-theme {
