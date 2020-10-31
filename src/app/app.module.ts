@@ -15,6 +15,7 @@ import {ThemingService} from './theming.service';
 import {WebAudioModule} from '@ng-web-apis/audio';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CardAudioComponent } from './card-audio/card-audio.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     ConfessComponent,
     HearComponent,
     CardComponent,
-    CardsGridComponent
+    CardsGridComponent,
+    CardAudioComponent
   ],
   imports: [
     BrowserModule,

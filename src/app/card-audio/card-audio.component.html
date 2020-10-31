@@ -1,0 +1,45 @@
+<button *ngIf="!started; else graph" (click)="start()">Start AudioContext</button>
+
+<ng-template #graph>
+   
+    <section>
+
+       
+        <ng-container [ngSwitch]="selectedSource">
+            <ng-container *ngSwitchCase="'buffer'">
+                <button
+                    *ngFor="let _ of buffers"
+                    #source="AudioNode"
+                    waAudioBufferSourceNode
+                    buffer="assets/mp3/sample.mp3"
+                    [loop]="true"
+                    (click)="onClick(source, $event.target)"
+                >
+                    Play
+                    <ng-container
+                        waAnalyserNode
+                        (timeByte$)="onTimeDomain($event, canvas)"
+                    >
+                        <ng-container [waOutput]="chain || fallback"></ng-container>
+                    </ng-container>
+                </button>
+            </ng-container>
+            <audio
+                *ngSwitchCase="'media'"
+                waMediaElementAudioSourceNode
+                src="assets/mp3/sample.mp3"
+                loop
+                controls
+            >
+                <ng-container waAnalyserNode (timeByte$)="onTimeDomain($event, canvas)">
+                    <ng-container [waOutput]="chain || fallback"></ng-container>
+                </ng-container>
+            </audio>
+            
+        </ng-container>
+
+        <p>
+            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode></canvas>
+        </p>
+    </section>
+</ng-template>
