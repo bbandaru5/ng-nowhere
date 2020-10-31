@@ -1,11 +1,18 @@
 .masonry-item { 
-    margin-bottom: 26px;
+    margin-bottom: 36px;
     width: 375px;
  }
+ @media only screen and (max-width: 380px) {
+    /* For mobile phones: */
+    .masonry-item { 
+        margin-bottom: 36px;
+        width: 332px;
+     }
+  }
 .main {
     text-align: center;
     width: 100%;
-    margin-top: 0px;
+    margin-top: 14px;
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: auto;

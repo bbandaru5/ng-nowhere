@@ -1,21 +1,26 @@
 <nav class="nav-content" [ngClass]="{'nav-back-dark-grad':isDarkMode, 'nav-back-light-grad': !isDarkMode}">
     <div class="d-flex justify-content-between mt2 mb1">
-        <img [src]="navLogoUrl" class="pointer height ml2" />
+        <!-- <img [src]="navLogoUrl" class="pointer height ml2 vis" /> -->
+        <a routerLink="/hear" routerLinkActive="active" class="pointer">
+            <img [src]="logoUrl" class="pointer height-logo ml2" />
+        </a>
         <div class="d-flex">
             <a routerLink="/hear" routerLinkActive="active" class="pointer listen mr-25 mb-0" [ngClass]="{selected: selection === 'hear'}" (click)="hearOnClick()">
-                <span>Listen</span>
+                <span class="fw-600">Listen</span>
                 <img *ngIf="selection !== 'hear'" class="hear-image" [src]="hearUrl"/>
                 <img *ngIf="selection === 'hear'" class="hear-image" [src]="hearSelectedUrl"/>
             </a>
             <a routerLink="/confess" routerLinkActive="active" class="pointer confess mr-25 mb-0" [ngClass]="{selected: selection === 'confess'}" (click)="confessOnClick()">
-                <span>Confess</span>
+                <span class="fw-600">Confess</span>
                 <img *ngIf="selection !== 'confess'" class="confess-image" [src]="confessUrl"/>
                 <img *ngIf="selection === 'confess'" class="confess-image" [src]="confessSelectedUrl"/>
             </a>
             <!-- <div class="listen pointer height mr2"></div>
             <div class="confess pointer height mr2"></div> -->
-            <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer mat-cust-color "> account_circle</mat-icon>
-            <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer mat-cust-color mr2"> expand_more</mat-icon>
+            <div class="pointer">
+                <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer"> account_circle</mat-icon>
+                <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer mr1"> expand_more</mat-icon>
+            </div>
         </div>
     </div>
 </nav>

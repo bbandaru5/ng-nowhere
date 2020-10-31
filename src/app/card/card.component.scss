@@ -8,6 +8,51 @@
     $text-warn: map-get($text-theme, warn);
     $text-accent: map-get($text-theme, accent);
     $text-foreground: map-get($text-theme, foreground);
+
+    $font-size: 14px;
+    $line-height: 1.5;
+    $lines-to-show: 1;
+
+    $card-lines-to-show: 50;
+.card2-content{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.card-elps {
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    max-height: $font-size*$line-height*$card-lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $card-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+}  
+.mat-tooltip{
+    font-size: 10px !important;
+    text-align: initial !important;
+    align-items: initial !important;
+}
+.elps {
+    display: -webkit-box;
+    width: 100%;
+    text-align: initial;
+    height: $font-size*$line-height*$lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+    }    
 .audio-card-2{
     width: 169px;
     height: 169px;
@@ -22,14 +67,65 @@
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
     border-radius: 25px;
 }
+.mat-campaign:hover{
+    color: #F47036 !important;
+}
+.mat-reply:hover{
+    color: #F47036 !important;
+}
 .text-card2{
     width: 374px;
-    height: 471px;
+    height: auto;
     background: mat-color($accent, darker);
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
     border-radius: 25px;
 }
-
+.theme-text-color-prim{
+    color: mat-color($text-primary, darker) !important;
+}
+.theme-text-color-sec{
+    color: mat-color($text-accent, darker) !important;
+}
+.mar-left{
+    margin-left: 36px;
+}
+.float{
+    position: absolute;
+    top: -24px;
+    // opacity: 0.85;
+    left: 16px;
+}
+.rel{
+    position: relative;
+    display: block;
+}
+@media only screen and (max-width: 380px) {
+    /* For mobile phones: */
+    .mar-left{
+        margin-left: 16px;
+    }
+    .audio-card-2{
+        width: 158px;
+        height: 158px;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+    .audio-card-1{
+        width: 158px;
+        height: 158px;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+    .text-card2{
+        width: 332px;
+        height: auto;
+        background: mat-color($accent, darker);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.03);
+        border-radius: 25px;
+    }
+  }
 .card2 .text-card2 {
     -webkit-transition: all 0.25s ease; /* Safari and Chrome */
   	-moz-transition: all 0.25s ease; /* Firefox */
@@ -38,11 +134,11 @@
   	transition: all 0.25s ease;
 }
 .card2:hover .text-card2 {
-    -webkit-transform:scale(0.99); /* Safari and Chrome */
-    -moz-transform:scale(0.99); /* Firefox */
-    -ms-transform:scale(0.99); /* IE 9 */
-    -o-transform:scale(0.99); /* Opera */
-     transform:scale(0.99);
+    -webkit-transform:scale(0.999); /* Safari and Chrome */
+    -moz-transform:scale(0.999); /* Firefox */
+    -ms-transform:scale(0.999); /* IE 9 */
+    -o-transform:scale(0.999); /* Opera */
+     transform:scale(0.999);
      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
 }
 .audio-card-2 {

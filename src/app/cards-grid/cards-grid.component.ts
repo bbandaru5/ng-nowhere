@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxMasonryOptions } from 'ngx-masonry';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxMasonryComponent, NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
   selector: 'app-cards-grid',
@@ -8,22 +8,29 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 })
 export class CardsGridComponent implements OnInit {
 
+  @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
+ 
+
   cards=[
-    {type:"audio"},
-    {type:"text"},
-    {type:"audio"},
-    {type:"text"},
-    {type:"text"},
-    {type:"text"},
-    {type:"text"},
-    {type:"audio"},
-    {type:"text"},
-    {type:"audio"},
-    {type:"text"},
-    {type:"text"},
-    {type:"audio"},
-    {type:"text"},
-    {type:"audio"},
+    {type:"audio",userId: "@sadmonkey5045646546544"},
+    {type:"audio",userId: "@user207"},
+    {type:"text",userId: "@sadpop603", title:"I am a drug addict. This is my story.", desc:"I am 25 years old. I spent some of my childhood in Belfast, Ireland. I also spent some of my childhood in Edmonton, Alberta. At age 14, I was smoking marijuana and tobacco daily, multiple times a day. Smoking marijuana helped me forget who I was, the feeling of getting out of my own skin was amazing. Since that first hit, I loved it. I knew then, I am able to get out of myself and I can use this substance to change how I feel, or not feel at all. That’s exactly what I wanted at that point in my life. At age 15, I was smoking marijuana any moment I could and soon found out that everyone around me was drinking alcohol so I thought I would try it. I thought “my parents and siblings drink so it couldn’t be that bad.” I drank so much that first time that I got very sick. Truth is I didn’t like drinking but it was socially acceptable so I drank as much as I could. I couldn’t seem to get enough. My drinking and using marijuana continued for two years. At age 17, I began to wonder, I began to realize I was not good at school or sports, so what am I going to do with my life. I was hanging around with the wrong people who told me that I didn’t need school and all I needed was them, and it will be alright. I believed them. I was looking for something to belong to. I felt at home. I said yes and used cocaine for the first time. It didn’t phase me and I began using cocaine at school and eventually got enough so that I could make some extra cash. One of my mistakes was bringing this substance to school to sell to my classmates. I was very “successful” but the principal caught on and long story short, I got kicked out of school. My family was furious. I continued my schooling at home and did quite well. My family thought it was all over there. But it did not change who I was spending my time with. It did not change my relationship with drugs and alcohol. From what I remember, it was to be “cool” to fit in with a certain crowd. As far as I could remember I did not fit in with anyone and wanted to be apart of something. I just wanted people to enjoy my presence and to like who I was, but to tell you the truth, I didn’t know who I was and I didn’t like myself. I felt worthless from a young age and that developed into an even lower level of self-esteem as a teenager.A few years went by, which were the most eye opening years of my life, now that I look back at them. Brown sugar. That brown substance was heroin. Something that I had never felt before in my life. I had never felt so lost in my mind. It was amazing. I was hooked. I loved it. At this point I am in my 20’s, and didn’t drink, didn’t smoke marijuana, didn’t use cocaine anymore. I was using strictly heroin, that substance I was so curious about. What I thought was heroin, turned out to be a substance called fentanyl. Something I didn’t know about. I loved it, I couldn’t feel worthless, I couldn’t feel in pain, I felt loved, not by people but by this substance. This was the sickest and most toxic relationship I have ever experienced in my life. I was addicted since day one. Since that first time I smoked a joint. But I thought this was the life. This is the way to live. This was the connection I had longed for. Nothing stood in between myself and the relationship. I was lonely. I lost everything. An amazing career, lifelong friends. I burnt those bridges. I didn’t mean to. Even before we were born, my twin brother, Ciarín, and I were inseparable. It’s hard to describe the bond of siblings, as many of you will know, but it’s probably even harder to really understand the connection between two people who’ve shared a womb together, at the same time, and took almost every breath of life not more than a few metres from each other. But the only way I can put it is that, my twin was my other half. Ciarín and I found ourselves, without really understanding how or why, addicted to opiates among other things. We hid our addiction well from our family. But things got bad really fast. Ciarín and I began to not get along so much, even though we lived together, worked together, partied together and even used together. We still kept our secrets and nobody seemed to know what was going on with us."},
+    {type:"text",userId: "@crackhead603",title:"My journey to hell and back began twelve years ago",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore etc.Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate iscillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deseruntmollit anim id est laborum. Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed do eiusmod temporincididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam."},
+    {type:"audio",userId: "@freak207"},
+    {type:"audio",userId: "@user209"},
+    {type:"text",userId: "@victim108", title:"This is the hardest thing I have ever had to deal with in my entire life.", desc:"Lorem ipsum dolor sit amet, sectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velicillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
+    {type:"text",userId: "@user504", title:"There was never any physical abuse, but the emotional abuse was constant", desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore etc.Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate iscillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deseruntmollit anim id est laborum. Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua."},
+    {type:"text",userId: "@dirtycandy207",title:"Through sheer determination and willpower I’m where I am today, gradually reclaiming my life.", desc:"On Feb 28, asine eimmn kin sad weadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. Duis aute irure dolor in first time in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis cocaineexercitation ullamco laboris nisi ut aliquip exea commodo LSD. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non  times, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute iruredolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Sunt in culpa qui officia deserunt."},
+    {type:"audio",userId: "@dirtycandy27"},
+    {type:"audio",userId: "@dirtycandy27"},
+    {type:"audio",userId: "@dirtycandy27"},
+    {type:"text",userId: "@sadmonkey507", title:"True story",desc:"When Ciarín passed away that was the deciding point in going to treatment for addiction. My decision changed my life for the better, I got help with that problem. That’s not to say that I am perfect. I do absolutely have problems. Being at Cedars helped me realize quickly that it wasn’t so much the drugs but my behaviours as well. I found out through my family history that I was wired an addict since the day I was born. But now I can deal with that. I have the tools to be alright with myself. I love myself today. I love who I can be and who I am. I learnt that it is okay to be who I was. I’m proud of who I am today. Thanks to a 12-Step program I can work through all of the behaviours and catch myself before I act out on them."},
+    {type:"audio",userId: "@freak207"},
+    {type:"text",userId: "@dirtycandy9",title:"Big Little Lie",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore etc.Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate iscillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deseruntmollit anim id est laborum. Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam."},
+    {type:"text",userId: "@freak102",title:"Drug addiction LSD, Cocaine",desc:"On Feb 28, asine eimmn kin sad weadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. Duis aute irure dolor in first time in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis cocaineexercitation ullamco laboris nisi ut aliquip exea commodo LSD. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non  times, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute iruredolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Sunt in culpa qui officia deserunt."},
+    {type:"audio",userId: "@dirtycandy007"},
+    {type:"text",userId: "@sadmonkey54", title:"Child Abuse",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore etc.Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate iscillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deseruntmollit anim id est laborum. Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam."},
+    {type:"audio",userId: "crack101"},
   ];
   public myOptions: NgxMasonryOptions = {
     gutter: 36,
@@ -32,6 +39,9 @@ export class CardsGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+      // after the order of items has changed
+  // this.masonry.reloadItems();
+  // this.masonry.layout();
   }
 
 }
