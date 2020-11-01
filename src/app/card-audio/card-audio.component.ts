@@ -78,6 +78,7 @@ onClick(source: AudioScheduledSourceNode, button: HTMLButtonElement) {
     }
 }
 ngAfterViewInit() {
+    this.updateTheme();
     this.cdRef.detectChanges();
 }
   ngAfterViewChecked(): void{
@@ -98,10 +99,11 @@ onTimeDomain(array: Uint8Array, canvas: HTMLCanvasElement) {
     if (!canvasCtx) {
         return;
     }
-
-    canvasCtx.fillStyle = this.audioBackgroundColor;
+    canvasCtx.clearRect(0,0,120,120);
+    canvasCtx.fillStyle = "rgba(0, 0, 200, 0)";
+    
     // canvasCtx.globalAlpha = 0.1;
-    canvasCtx.fillRect(0, 0, 120.5, 120);
+    canvasCtx.fillRect(0, 0, 121, 120);
     // canvasCtx.globalAlpha = 1.0;
     // canvasCtx.fillRect(0, 0, 120, 120);
 
@@ -128,6 +130,7 @@ onTimeDomain(array: Uint8Array, canvas: HTMLCanvasElement) {
 
     canvasCtx.lineTo(120, 120 / 2);
     canvasCtx.stroke();
+   
 }
 showPlay(){
  this.show = true     

@@ -1,5 +1,5 @@
-<nav class="nav-content" [ngClass]="{'nav-back-dark-grad':isDarkMode, 'nav-back-light-grad': !isDarkMode}">
-    <div class="d-flex justify-content-between mt2 mb1">
+<nav class="nav-content" >
+    <div class="d-flex justify-content-between mt2 mb1" style="z-index: 1001;">
         <!-- <img [src]="navLogoUrl" class="pointer height ml2 vis" /> -->
         <a routerLink="/hear" routerLinkActive="active" class="pointer">
             <img [src]="logoUrl" class="pointer height-logo ml2" />
@@ -17,10 +17,17 @@
             </a>
             <!-- <div class="listen pointer height mr2"></div>
             <div class="confess pointer height mr2"></div> -->
-            <div class="pointer">
+            <div class="pointer user-op" (click)="onClickUserOption()">
                 <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer"> account_circle</mat-icon>
-                <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer mr1"> expand_more</mat-icon>
+                <mat-icon [ngClass]="{'mat-cust-dark-color':isDarkMode, 'mat-cust-light-color': !isDarkMode}" class="pointer mr1"> {{expandIcon}}</mat-icon>
+                
             </div>
         </div>
     </div>
+    <div class="dropdown right mr2" *ngIf="showMenu">
+        <mat-slide-toggle class="dark-text" [(ngModel)]="isDarkMode" (change)="changed($event)">Dark Mode</mat-slide-toggle>
+    </div>
+
+    <div class="bg-grad" style="z-index: -1;" [ngClass]="{'nav-back-dark-grad':isDarkMode, 'nav-back-light-grad': !isDarkMode}"></div>
+
 </nav>

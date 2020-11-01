@@ -17,15 +17,44 @@ export class NavBarComponent implements OnInit, AfterViewChecked, AfterViewInit 
   confessDarkUrl = 'assets/images/confess-icon-dark.svg';
   confessSelectedUrl = 'assets/images/confess-o.svg';
   selection = "hear";
+  expandIcon = "expand_more"
   isDarkMode = false;
+  showMenu = false;
+  userLinks = [
+    {
+      name: "Change Password",
+      iconCls: "fa fa-list-ol",
+      click: "changePassword",
+    },
+    {
+      iconCls: "fa fa-plus",
+      name: "Log Out",
+      click: "logout",
+    },
+  ];
   ngOnInit(): void {
     this.updateTheme();
+    this.showMenu = false;
   }
 
   hearOnClick(){
     this.selection = "hear"
   }
-
+  onClickUserOption(){
+    this.showMenu = !this.showMenu;
+    this.expandIcon = this.showMenu?"expand_less":"expand_more";
+  }
+  changed($event){
+    this.changeTheme($event);
+  }
+  changeTheme($event){
+    console.log($event)
+    this.isDarkMode = $event.checked;
+    if($event.checked)
+      this.themingService.theme.next("dark-theme");
+    else
+      this.themingService.theme.next("light-theme")
+  }
   confessOnClick(){
     this.selection = "confess"
   }

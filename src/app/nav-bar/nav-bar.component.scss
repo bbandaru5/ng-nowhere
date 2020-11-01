@@ -64,14 +64,20 @@
         position: absolute;
         top: -2px;
     }
-    .nav-content{
+    .bg-grad{
+        position: absolute;
         height: 60px;
+        width: 100%;
+        top: 0;
+    }
+    .nav-content{
         position: fixed;
         top: 0;
         width: 100%;
         overflow: hidden;
         z-index: 100;
     }
+    
     .nav-back-dark-grad{
         background: linear-gradient(180deg, mat-color($primary, darker) 42.19%, #0b0b0b00);
     }
@@ -79,4 +85,29 @@
         background: linear-gradient(180deg, mat-color($primary, darker) 42.19%,#D5CBC000);
 
     }
+    .user-op:hover{
+        .dropdown{
+        display: block;
+        padding: 15px;
+        border-radius: 15px;
+        background-color: mat-color($text-primary, darker);
+    }
+    }
+    .abc{
+        position: absolute;
+        top: 0;
+    }
+    .dropdown{
+        display: block;
+        padding: 15px;
+        border-radius: 15px;
+        background-color: mat-color($text-primary, darker);
+    }
+    .dark-text{
+        color: mat-color($primary, darker);
+    }
+    .mat-icon-button ::ng-deep .mat-button-focus-overlay {
+        display: none;
+    }
+    
 }

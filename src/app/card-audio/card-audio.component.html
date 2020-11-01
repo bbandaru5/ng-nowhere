@@ -31,12 +31,8 @@
                     <ng-container [waOutput]="chain || fallback"></ng-container>
                 </ng-container>
             </audio>
-            
         </ng-container>
-
-        <p>
-            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120"></canvas>
-        </p>
+            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120" width="120" class="left"></canvas>
     </section>
 
 </ng-template>
