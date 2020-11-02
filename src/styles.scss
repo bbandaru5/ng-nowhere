@@ -11,11 +11,13 @@
 @import "app/card/card.component";
 @import "scss/custom-dark-theme.scss";
 @import "app/card-audio/card-audio.component";
+@import "app/audio-card-modal/audio-card-modal.component";
 @mixin custom-components-theme($theme,$text-theme) {
   @include app-theme($theme, $text-theme);
   @include nav-theme($theme, $text-theme);
   @include card-theme($theme, $text-theme);
   @include card-audio($theme, $text-theme);
+  @include card-audio-modal-theme($theme, $text-theme);
 }
 
 .light-theme {
@@ -31,4 +33,37 @@
 body {
   margin: 0;
   padding: 0;
+}
+.dark-theme .mat-dialog-container {
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  background: #26272b;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 25px;
+}
+.light-theme .mat-dialog-container {
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  background: #e0d9d2;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 25px;
+}
+.mat-chip {
+  font-size: 11px;
+  font-weight: 500;
+}
+.light-theme .mat-chip.mat-standard-chip {
+  background-color: #706d69;
+  color: #e0d9d2;
+}
+.dark-theme .mat-chip.mat-standard-chip {
+  background-color: #797979;
+  color: #0b0b0b;
+}
+.light-theme .mat-progress-bar-background {
+  fill: #f47037 !important;
+}
+.dark-theme .mat-progress-bar-background {
+  fill: #f47037 !important;
+}
+.cdk-overlay-dark-backdrop {
+  background: #000000ad;
 }

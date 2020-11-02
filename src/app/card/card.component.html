@@ -3,18 +3,18 @@
         <div class="d-flex" *ngIf="type === 'audio'">
             <div class="rel">
                 <div class="audio-card-1">
-                    <a class="float font-14 fw-600 theme-text-color-prim elps pointer" matTooltip="{{card.userId}}"
+                    <a class="float font-14 fw-600 theme-text-color-prim elps pointer" matTooltip="{{card1.userId}}"
                     [matTooltipShowDelay]="500" [matTooltipPosition]="position.value"
-                    [matTooltipHideDelay]="1000"> {{card.userId}}</a> 
-                    <div style="padding-left: 24px;"><app-card-audio></app-card-audio></div>
+                    [matTooltipHideDelay]="1000"> {{card1.userId}}</a> 
+                    <div ><app-card-audio [card]="card1" (showAudioCard) = 'updateCard($event)'></app-card-audio></div>
                 </div>
             </div>
             <div class="rel mar-left">
                 <div class="audio-card-2">
-                    <a class="float font-14 fw-600 theme-text-color-prim elps pointer" matTooltip="{{card.userId}}"
+                    <a class="float font-14 fw-600 theme-text-color-prim elps pointer" matTooltip="{{card2.userId}}"
                     [matTooltipShowDelay]="500" [matTooltipPosition]="position.value"
-                    [matTooltipHideDelay]="1000"> {{card.userId}}</a> 
-                    <div style="padding-left: 24px;"><app-card-audio></app-card-audio></div>
+                    [matTooltipHideDelay]="1000"> {{card2.userId}}</a> 
+                    <div ><app-card-audio [card]="card2" (showAudioCard) = 'updateCard($event)'></app-card-audio></div>
                 </div>
             </div>
         </div>
@@ -25,8 +25,16 @@
                     [matTooltipHideDelay]="1000"> {{card.userId}}</a>  
 
                 <h2 class="font-merri  theme-text-color-prim pr2 fw-600 opacity-90" style="text-align: initial;padding-left: 20px; padding-top: 23px;">{{card.title}}</h2>
-
-                <p class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;">{{card.desc}}</p>
+                <div class="pr1 pb1" style="padding-left: 25px;">
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip [selectable]=false> <p class="mb0">Schizoaffective disorder</p> </mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">broken promise</p></mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">psychosis</p></mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">racism</p></mat-chip>
+                    </mat-chip-list>
+                </div>
+                <p class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;" [ngClass]="{'card-elps': readMore}">{{card.desc}}</p>
+                <p *ngIf = "readMore" class="font-merri font-14 theme-text-color-prim underline" (click) = "onClickReadMore()">read more..</p>
                 <div class="d-felx justify-content-end mr2 pb1" style="text-align: end;">
                     <mat-icon class="theme-text-color-sec pointer mr1 mat-reply"> reply</mat-icon>
                     <mat-icon class="theme-text-color-sec pointer mr1 mat-campaign"> campaign</mat-icon>

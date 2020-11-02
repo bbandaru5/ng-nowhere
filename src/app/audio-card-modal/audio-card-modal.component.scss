@@ -1,0 +1,23 @@
+@mixin card-audio-modal-theme($theme, $text-theme) {
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+
+    $text-primary: map-get($text-theme, primary);
+    $text-warn: map-get($text-theme, warn);
+    $text-accent: map-get($text-theme, accent);
+    $text-foreground: map-get($text-theme, foreground);
+    .displayNone{
+        display: none;
+    }
+    .displayInline{
+        display: block;
+    }
+    .theme-text-color-prim{
+        color: mat-color($text-primary, darker) !important;
+    }
+    .theme-text-color-sec{
+        color: mat-color($text-accent, darker) !important;
+    }
+}    

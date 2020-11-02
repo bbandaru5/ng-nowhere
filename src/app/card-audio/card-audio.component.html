@@ -32,16 +32,24 @@
                 </ng-container>
             </audio>
         </ng-container>
-            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120" width="120" class="left"></canvas>
+            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120" width="{{pulseWidth}}" class="left" (click) = "onClickAudioCard1()"></canvas>
     </section>
 
 </ng-template>
 </div>
 <div *ngIf="!show">
-    <div class="d-flex text-content">
-        <div>
-            <p class="header-elpis theme-text-color-prim" >Don't judge me for my actions blah blah</p>
-            <p class="card-elpis font-merri theme-text-color-sec" >Something that I had never felt before in my life. I had never felt so lost in my mind. It was amazing. I was hooked. I loved it.</p>
+    <div class="d-flex text-content" style="padding-left: 24px;">
+        <div style="width: 80%; height: 100%;" (click) = "onClickAudioCard1()">
+            <p class="header-elpis theme-text-color-prim" >{{card.title}}</p>
+            <!-- <p class="card-elpis font-merri theme-text-color-sec" >{{card.desc}}</p> -->
+            <div class="left" style="height: 100px; padding-top: 5px;">
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip> <p class="chip-elpis">Schizoaffective disorder</p> </mat-chip>
+                    <mat-chip><p class="chip-elpis">broken promise</p></mat-chip>
+                    <mat-chip><p class="chip-elpis">racism</p></mat-chip>
+                    <mat-chip><p class="chip-elpis">psychosis</p></mat-chip>
+                </mat-chip-list>
+            </div>
         </div>
         <mat-icon class="next theme-text-color-prim" (click) = "showPlay()">navigate_next</mat-icon>
     </div>  

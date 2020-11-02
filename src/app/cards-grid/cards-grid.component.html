@@ -1,7 +1,9 @@
 <div class="main">
     <ngx-masonry class="ngx-masonry" [options]="myOptions"> 
-        <app-card ngxMasonryItem class="masonry-item" 
+        <app-card ngxMasonryItem class="masonry-item" (showAudioCard) = 'updateCard($event)' (reloadCards) = "reloadCards($event)"
         *ngFor = "let card of cards" [type]="card.type" [card]="card">
         </app-card>
     </ngx-masonry>
 </div>
+<!-- 
+<app-card-wave></app-card-wave> -->

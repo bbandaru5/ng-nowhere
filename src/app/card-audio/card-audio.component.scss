@@ -13,6 +13,7 @@
     $line-height: 1.4;
     $card-lines-to-show: 5;
     $header-lines-to-show: 2;
+    $chip-lines-to-show: 1;
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */
     .next{
@@ -21,19 +22,19 @@
         display: inline;
     }
     .card-elpis{
-        width: 120% !important;
+        width: 100% !important;
     }
     .header-elpis{
-        width: 120% !important;
+        width: 100% !important;
     }
 }    
 @media only screen and (min-width: 500px) {
-    /* For mobile phones: */
     .next{
         padding-top: 55px;
         cursor: pointer;
         display: none;
     }
+    
 }   
 .text-content{
     padding-top:18px
@@ -46,10 +47,10 @@
         display: inline;
     }
     .card-elpis{
-        width: 120%;;
+        width: 100%;;
     }
     .header-elpis{
-        width: 120%;;
+        width: 100%;;
     }
 }
 .theme-text-color-prim{
@@ -61,34 +62,58 @@
 .header-elpis{
     font-weight: 600;
     display: -webkit-box;
-    width: 100%;
+    width: 110%;
     text-align: initial;
     max-height: $font-size*$line-height*$header-lines-to-show;
-    margin: 0 auto;
     font-size: $font-size;
     line-height: $line-height;
+    margin: 0;
     -webkit-line-clamp: $card-lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-right: 30px;
     text-overflow: ellipsis;
 }
 .card-elpis{
+    margin: 0;
     display: -webkit-box;
-    width: 100%;
+    width: 110%;
     text-align: initial;
     max-height: $font-size*$line-height*$card-lines-to-show;
-    margin: 0 auto;
     font-size: $font-size;
     line-height: $line-height;
     -webkit-line-clamp: $card-lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-right: 30px;
+    text-overflow: ellipsis;
+}  
+.chip-elpis{
+    margin: 0;
+    display: -webkit-box;
+    max-width: 100px;
+    text-align: initial;
+    max-height: 12*$line-height*$chip-lines-to-show;
+    font-size: 12px;
+    line-height: $line-height;
+    -webkit-line-clamp: $chip-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-overflow: ellipsis;
 }  
 .back-color{
     border-radius: 25px;
     background: #f47037b5;
+}
+.mat-standard-chip {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    padding: 4px 7px;
+    border-radius: 16px;
+    align-items: center;
+    cursor: default;
+    min-height: 20px;
+    height: 1px;
+  }
+  .mat-chip-list-wrapper input.mat-input-element, .mat-chip-list-wrapper .mat-standard-chip {
+    margin: 2.5px;
 }
 }

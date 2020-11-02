@@ -16,6 +16,9 @@ import {WebAudioModule} from '@ng-web-apis/audio';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CardAudioComponent } from './card-audio/card-audio.component';
+import { CardSmallWaveComponent } from './card-small-wave/card-small-wave.component';
+import { AudioCardModalComponent } from './audio-card-modal/audio-card-modal.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { CardAudioComponent } from './card-audio/card-audio.component';
     HearComponent,
     CardComponent,
     CardsGridComponent,
-    CardAudioComponent
+    CardAudioComponent,
+    CardSmallWaveComponent,
+    AudioCardModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { CardAudioComponent } from './card-audio/card-audio.component';
   providers: [{
     provide: LocationStrategy,
     useClass: PathLocationStrategy,
-    },
+    },{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     ThemingService],
   bootstrap: [AppComponent]
 })

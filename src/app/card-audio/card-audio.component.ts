@@ -1,6 +1,8 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AUDIO_CONTEXT } from '@ng-web-apis/audio';
 import { NgxMasonryComponent } from 'ngx-masonry';
+import { AudioCardModalComponent } from '../audio-card-modal/audio-card-modal.component';
 import { ThemingService } from '../theming.service';
 
 @Component({
@@ -10,140 +12,152 @@ import { ThemingService } from '../theming.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewInit  {
-  buffers = [Date.now()];
 
-  selectedChain = 'dry';
+    @Input()
+    card
 
-  selectedSource = 'buffer';
+    @Output() showAudioCard = new EventEmitter();
+    buffers = [Date.now()];
 
-  audioBackgroundColor = 'rgb(224, 217, 210)';
+    selectedChain = 'dry';
 
-  gain = 1;
+    selectedSource = 'buffer';
 
-  pan = 0;
+    audioBackgroundColor = 'rgb(224, 217, 210)';
 
-  delayTime = 1;
+    gain = 1;
 
-  delayGain = 0.5;
+    pan = 0;
 
-  distortion = 20;
+    delayTime = 1;
 
-  frequency = 350;
+    delayGain = 0.5;
 
-  detune = 0;
+    distortion = 20;
 
-  filterGain = 0;
+    frequency = 350;
 
-  Q = 1;
+    detune = 0;
 
-  show = false;
+    filterGain = 0;
 
-  type: BiquadFilterType = 'lowpass';
+    Q = 1;
 
-  curve = makeDistortionCurve(this.distortion);
+    show = false;
 
-  started = true;
+    type: BiquadFilterType = 'lowpass';
 
-  readonly real = [0, 0, 1, 0, 1];
+    curve = makeDistortionCurve(this.distortion);
 
-  @ViewChild('chain',{static: false})
-  readonly chain?: AudioNode;
+    started = true;
 
-  @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
+    readonly real = [0, 0, 1, 0, 1];
 
-  constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext, private themingService: ThemingService,private cdRef:ChangeDetectorRef) { }
+    pulseWidth = 158;
 
-  ngOnInit(): void {
-    this.updateTheme();
-    this.context.resume();
-  }
+    @ViewChild('chain',{static: false})
+    readonly chain?: AudioNode;
 
-  get distortionCompensation(): number {
-    return 1.2 - this.distortion / 20;
-}
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
 
+    constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext, private themingService: ThemingService,private cdRef:ChangeDetectorRef,public dialog: MatDialog) { }
 
-onCurveChange(distortion: number) {
-    this.distortion = distortion;
-    this.curve = makeDistortionCurve(distortion);
-}
-
-onClick(source: AudioScheduledSourceNode, button: HTMLButtonElement) {
-    if (button.textContent!.trim() === 'play_arrow') {
-        button.textContent = 'highlight_off';
-        source.start();
-    } else {
-        this.show = false;
-        this.buffers[0] = Date.now();
+    ngOnInit(): void {
+        this.show = this.card.show;
+    if(window.innerWidth > 380){
+        this.pulseWidth = 169
     }
-}
-ngAfterViewInit() {
     this.updateTheme();
-    this.cdRef.detectChanges();
-}
-  ngAfterViewChecked(): void{
-    this.updateTheme();
-    this.cdRef.detectChanges();
-}
-  updateTheme(){
-    if(this.themingService.theme.value === 'light-theme'){
-      this.audioBackgroundColor = 'rgb(224, 217, 210)';
-     }else{
-      this.audioBackgroundColor = 'rgb(38, 39, 43)';
-     
-     }
-  }
-onTimeDomain(array: Uint8Array, canvas: HTMLCanvasElement) {
-    const canvasCtx = canvas.getContext('2d');
-
-    if (!canvasCtx) {
-        return;
+        this.context.resume();
     }
-    canvasCtx.clearRect(0,0,120,120);
-    canvasCtx.fillStyle = "rgba(0, 0, 200, 0)";
-    
-    // canvasCtx.globalAlpha = 0.1;
-    canvasCtx.fillRect(0, 0, 121, 120);
-    // canvasCtx.globalAlpha = 1.0;
-    // canvasCtx.fillRect(0, 0, 120, 120);
 
-    canvasCtx.lineWidth = 2;
-    canvasCtx.strokeStyle = 'rgb(244, 112, 54)';
+    get distortionCompensation(): number {
+        return 1.2 - this.distortion / 20;
+    }
 
-    canvasCtx.beginPath();
 
-    const sliceWidth = (120 * 1.0) / array.length;
-    let x = 0;
+    onCurveChange(distortion: number) {
+        this.distortion = distortion;
+        this.curve = makeDistortionCurve(distortion);
+    }
 
-    for (let i = 0; i < array.length; i++) {
-        const v = array[i] / 128.0;
-        const y = (v * 120) / 2;
-
-        if (i === 0) {
-            canvasCtx.moveTo(x, y);
+    onClick(source: AudioScheduledSourceNode, button: HTMLButtonElement) {
+        if (button.textContent!.trim() === 'play_arrow') {
+            button.textContent = 'highlight_off';
+            source.start();
         } else {
-            canvasCtx.lineTo(x, y);
+            this.show = false;
+            this.card.show = false;
+            this.buffers[0] = Date.now();
         }
-
-        x += sliceWidth;
     }
-
-    canvasCtx.lineTo(120, 120 / 2);
-    canvasCtx.stroke();
-   
-}
-showPlay(){
- this.show = true     
-}
+    ngAfterViewInit() {
+        this.updateTheme();
+        this.show = this.card.show;
+        this.cdRef.detectChanges();   
+    }
+    ngAfterViewChecked(): void{
+        this.show = this.card.show;
+        this.updateTheme();
+        this.cdRef.detectChanges();
+    }
+    updateTheme(){
+    if(this.themingService.theme.value === 'light-theme'){
+        this.audioBackgroundColor = 'rgb(224, 217, 210)';
+            }else{
+        this.audioBackgroundColor = 'rgb(38, 39, 43)';
+        }
+    }
+    onTimeDomain(array: Uint8Array, canvas: HTMLCanvasElement) {
+        const canvasCtx = canvas.getContext('2d');
+        if (!canvasCtx) {
+            return;
+        }
+        canvasCtx.clearRect(0,0,this.pulseWidth,120);
+        canvasCtx.fillStyle = "rgba(0, 0, 200, 0)";
+        canvasCtx.fillRect(0, 0, this.pulseWidth+1, 120);
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = 'rgb(244, 112, 54)';
+        canvasCtx.beginPath();
+        const sliceWidth = (this.pulseWidth * 1.0) / array.length;
+        let x = 0;
+        for (let i = 0; i < array.length; i++) {
+            const v = array[i] / 128.0;
+            const y = (v * 120) / 2;
+            if (i === 0) {
+                canvasCtx.moveTo(x, y);
+            } else {
+                canvasCtx.lineTo(x, y);
+            }
+            x += sliceWidth;
+        }
+        canvasCtx.lineTo(this.pulseWidth, 120 / 2);
+        canvasCtx.stroke();
+    }
+    showPlay(){
+        this.show = true;
+        this.card.show = true;
+        this.showAudioCard.emit(this.card);
+    }
+    onClickAudioCard1(){
+        this.show = false;
+        this.card.show = false;
+        this.openDailog();
+      }
+      openDailog(){
+        return this.dialog.open(AudioCardModalComponent, {
+            width: '380px',
+            data: { "card": this.card}
+          });
+      }
+    
 }
 function makeDistortionCurve(amount: number): Float32Array {
   const samples = 44100;
   const curve = new Float32Array(samples);
   const deg = Math.PI / 180;
-
   for (let i = 0; i < samples; ++i) {
       const x = (i * 2) / samples - 1;
-
       curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
   }
   return curve;
