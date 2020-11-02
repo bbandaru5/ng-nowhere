@@ -46,6 +46,8 @@ export class NavBarComponent implements OnInit, AfterViewChecked, AfterViewInit 
   }
   changed($event){
     this.changeTheme($event);
+    this.showMenu = false;
+    this.expandIcon = this.showMenu?"expand_less":"expand_more";
   }
   changeTheme($event){
     console.log($event)
