@@ -12,12 +12,16 @@
 @import "scss/custom-dark-theme.scss";
 @import "app/card-audio/card-audio.component";
 @import "app/audio-card-modal/audio-card-modal.component";
+@import "app/audio-float-info/audio-float-info.component";
+@import "app/audio-card/audio-card.component";
 @mixin custom-components-theme($theme,$text-theme) {
   @include app-theme($theme, $text-theme);
   @include nav-theme($theme, $text-theme);
   @include card-theme($theme, $text-theme);
   @include card-audio($theme, $text-theme);
   @include card-audio-modal-theme($theme, $text-theme);
+  @include audio-card-theme($theme, $text-theme);
+  @include audio-float-theme($theme, $text-theme);
 }
 
 .light-theme {
@@ -66,4 +70,7 @@ body {
 }
 .cdk-overlay-dark-backdrop {
   background: #000000ad;
+}
+.light-theme .mat-slide-toggle-bar {
+  background-color: rgb(112 109 104);
 }

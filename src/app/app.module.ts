@@ -11,15 +11,18 @@ import { CardComponent } from './card/card.component';
 import { CardsGridComponent } from './cards-grid/cards-grid.component'
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ThemingService} from './theming.service';
-import {WebAudioModule} from '@ng-web-apis/audio';
+import { ThemingService } from './theming.service';
+import { WebAudioModule } from '@ng-web-apis/audio';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CardAudioComponent } from './card-audio/card-audio.component';
 import { CardSmallWaveComponent } from './card-small-wave/card-small-wave.component';
 import { AudioCardModalComponent } from './audio-card-modal/audio-card-modal.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { AudioCardComponent } from './audio-card/audio-card.component';
+import { CommunicationService } from './shared/communication.service';
+import { AudioFloatInfoComponent } from './audio-float-info/audio-float-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     CardsGridComponent,
     CardAudioComponent,
     CardSmallWaveComponent,
-    AudioCardModalComponent
+    AudioCardModalComponent,
+    AudioCardComponent,
+    AudioFloatInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     provide: LocationStrategy,
     useClass: PathLocationStrategy,
     },{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-    ThemingService],
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    ThemingService,
+    CommunicationService,
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

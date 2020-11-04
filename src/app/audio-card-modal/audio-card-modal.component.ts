@@ -1,5 +1,5 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import WaveSurfer from 'wavesurfer.js';
 @Component({
   selector: 'app-audio-card-modal',
@@ -14,7 +14,7 @@ export class AudioCardModalComponent implements OnInit,AfterViewChecked {
   musicButton = "not_started";
   duration = "1:00";
   constructor(private cdr: ChangeDetectorRef, public dialogRef: MatDialogRef<AudioCardModalComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any) { }
+  @Inject(MAT_DIALOG_DATA) public data: any,@Inject(MAT_DIALOG_DEFAULT_OPTIONS) public config: any) { }
 
   card: any;
 
@@ -46,6 +46,7 @@ generateWaveform(): void {
     });
     this.wave.hideScrollbar = true;
     this.wave.on('ready', () => {
+      this.dialogRef.disableClose = true;
       this.loading = false;
       this.loaded = true;
       this.wave.play();

@@ -1,5 +1,6 @@
+<div>
 <div><mat-icon class="theme-text-color-prim right pointer" (click) = "onClickDismiss()">highlight_off</mat-icon></div>
-<div><p class="font-36 font-merri fw-600 theme-text-color-prim" style="line-height: 1.2;">{{card.title}}</p></div>
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane" class="grab" cdkDragHandle><p class="font-36 font-merri fw-600 theme-text-color-prim" style="line-height: 1.2;">{{card.title}}</p></div>
 
 <div>
     <mat-chip-list aria-label="Fish selection">
@@ -12,7 +13,7 @@
 
 <div style="padding-top: 20px;">
 	<div style="width: 100%" >
-		<div id="waveform" style="padding-bottom: 10px;"></div>
+		<div id="waveform" class="pointer" style="padding-bottom: 10px;"></div>
 		<div *ngIf="!loading" class="d-flex justify-content-between">
 			<mat-icon class="font-36 pointer color-orange" (click)="onPlayStopPressed($event.target)">{{musicButton}}</mat-icon>
 			<!-- <p *ngIf = "wave" class="mb0 pr1 pt2 font-12 fw-600 theme-text-color-prim">
@@ -25,4 +26,4 @@
 <div *ngIf="loading">
 	<mat-progress-bar mode="buffer"></mat-progress-bar>
 </div>
-
+</div>

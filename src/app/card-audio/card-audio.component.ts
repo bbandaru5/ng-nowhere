@@ -1,8 +1,10 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AUDIO_CONTEXT } from '@ng-web-apis/audio';
 import { NgxMasonryComponent } from 'ngx-masonry';
+import { Subscription } from 'rxjs';
 import { AudioCardModalComponent } from '../audio-card-modal/audio-card-modal.component';
+import { CommunicationService } from '../shared/communication.service';
 import { ThemingService } from '../theming.service';
 
 @Component({
@@ -11,66 +13,61 @@ import { ThemingService } from '../theming.service';
   styleUrls: ['./card-audio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewInit  {
-
-    @Input()
-    card
-
+export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy  {
+    subscription: Subscription;
+    @Input() card;
     @Output() showAudioCard = new EventEmitter();
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
     buffers = [Date.now()];
-
+    source: AudioScheduledSourceNode;
     selectedChain = 'dry';
-
     selectedSource = 'buffer';
-
     audioBackgroundColor = 'rgb(224, 217, 210)';
-
     gain = 1;
-
     pan = 0;
-
     delayTime = 1;
-
     delayGain = 0.5;
-
     distortion = 20;
-
     frequency = 350;
-
     detune = 0;
-
     filterGain = 0;
-
     Q = 1;
-
     show = false;
-
     type: BiquadFilterType = 'lowpass';
-
     curve = makeDistortionCurve(this.distortion);
-
     started = true;
-
     readonly real = [0, 0, 1, 0, 1];
 
     pulseWidth = 158;
 
-    @ViewChild('chain',{static: false})
-    readonly chain?: AudioNode;
 
-    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
-
-    constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext, private themingService: ThemingService,private cdRef:ChangeDetectorRef,public dialog: MatDialog) { }
+    constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext, 
+    private themingService: ThemingService,
+    private cdRef:ChangeDetectorRef,
+    private communicationService: CommunicationService,
+    public dialog: MatDialog) {
+        this.subscription = communicationService.getMessage().subscribe(message=>{
+            if(this.source){
+                if(message.play === true){
+                    this.source.start();        
+                }else if(message.play === false){
+                    this.source.stop();    
+                }
+            }
+        });
+     }
 
     ngOnInit(): void {
         this.show = this.card.show;
-    if(window.innerWidth > 380){
-        this.pulseWidth = 169
-    }
-    this.updateTheme();
+        if(window.innerWidth > 380){
+            this.pulseWidth = 169
+        }
+        this.updateTheme();
         this.context.resume();
     }
-
+    ngOnDestroy(){
+        this.subscription.unsubscribe();
+    }
     get distortionCompensation(): number {
         return 1.2 - this.distortion / 20;
     }
@@ -82,13 +79,18 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     }
 
     onClick(source: AudioScheduledSourceNode, button: HTMLButtonElement) {
-        if (button.textContent!.trim() === 'play_arrow') {
+        if (button.textContent!.trim() === 'not_started') {
             button.textContent = 'highlight_off';
             source.start();
+            this.source = source;
+            this.communicationService.sendMessage({showFloatAudioPlayer: true});
+            this.communicationService.sendMessage({ loaded: false });
         } else {
+            source.stop();
             this.show = false;
             this.card.show = false;
             this.buffers[0] = Date.now();
+            this.communicationService.sendMessage({showFloatAudioPlayer: false});
         }
     }
     ngAfterViewInit() {
@@ -153,12 +155,12 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     
 }
 function makeDistortionCurve(amount: number): Float32Array {
-  const samples = 44100;
-  const curve = new Float32Array(samples);
-  const deg = Math.PI / 180;
-  for (let i = 0; i < samples; ++i) {
-      const x = (i * 2) / samples - 1;
-      curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
-  }
-  return curve;
+    const samples = 44100;
+    const curve = new Float32Array(samples);
+    const deg = Math.PI / 180;
+    for (let i = 0; i < samples; ++i) {
+        const x = (i * 2) / samples - 1;
+        curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
+    }
+    return curve;
 }

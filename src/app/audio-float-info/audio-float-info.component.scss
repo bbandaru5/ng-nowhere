@@ -1,0 +1,82 @@
+@mixin audio-float-theme($theme, $text-theme) {
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+
+    $text-primary: map-get($text-theme, primary);
+    $text-warn: map-get($text-theme, warn);
+    $text-accent: map-get($text-theme, accent);
+    $text-foreground: map-get($text-theme, foreground);
+
+    $font-size: 14px;
+    $line-height: 1.4;
+    $title-lines-to-show: 1;
+
+    .title-elpis{
+        font-weight: 600;
+        display: -webkit-box;
+        width: 100%;
+        text-align: initial;
+        max-height: $font-size*$line-height*$title-lines-to-show;
+        font-size: $font-size;
+        line-height: $line-height;
+        margin: 0;
+        -webkit-line-clamp: $title-lines-to-show;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .chevron{
+        background-color: mat-color($accent, darker);
+        border-radius: 30px;
+    }
+    .fixed {
+        position: fixed;
+        bottom: 42px;
+        right: 42px;
+    } 
+    .card-bg{
+        box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+        background: mat-color($text-primary, darker) !important;
+        border-radius: 25px;
+        padding-left: 7px;
+        padding-right: 8px;
+        padding-top: 7px;
+    }
+    .w-310{
+        width: 310px;
+    }
+    .w-54{
+        width: 50px;
+    }
+    .displayNone{
+        display: none;
+    }
+    .displayInline{
+        display: block;
+    }
+    .theme-text-color-prim{
+        color: mat-color($text-primary, darker) !important;
+    }
+    .theme-text-color-sec{
+        color: mat-color($text-accent, darker) !important;
+    }
+    .grab:active {
+        cursor: -webkit-grabbing;
+        cursor: -moz-grabbing;
+    }
+    .buffer-position{
+        top: 24px;
+        left: 28px;
+        position: absolute;
+        width: 310px;
+    }
+    .color-accent{
+        color: mat-color($primary, darker) !important;
+    }
+    .color-accent-play{
+        color: mat-color($primary, darker) !important;
+    }
+    
+}    

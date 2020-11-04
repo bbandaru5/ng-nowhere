@@ -20,4 +20,8 @@
     .theme-text-color-sec{
         color: mat-color($text-accent, darker) !important;
     }
+    .grab:active {
+        cursor: -webkit-grabbing;
+        cursor: -moz-grabbing;
+    }
 }    

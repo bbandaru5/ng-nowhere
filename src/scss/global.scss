@@ -6,3 +6,23 @@ html,body {
     font-family: 'Montserrat', sans-serif;
     color: #0B0B0B;
 }
+
+.displayNone{
+    display: none;
+}
+.displayInline{
+    display: block;
+}
+.visible{
+    visibility: visible;
+}
+.invisible{
+    visibility: hidden;
+}
+.grab:active {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+}
+.grab {cursor: -webkit-grab; cursor: grab;}
+.grabbing {cursor: -webkit-grabbing; cursor: grabbing;}
+.col-resize {cursor: col-resize;}

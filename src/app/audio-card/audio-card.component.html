@@ -1,0 +1,32 @@
+<div *ngIf="played" class="fixed">
+ <!-- cdkDrag cdkDragRootElement=".fixed" cdkDragHandle> -->
+    <div *ngIf="!closed" style="display: inline-block;"><mat-icon class="theme-text-color-prim right pointer mb-6 mr-1 chevron" (click) = "onClickClosed()">cancel</mat-icon> </div>
+    <div class="card-bg" style="display: inline-block;" [ngClass]="{'w-310': !closed,'w-54': closed}">
+        <div>
+            <div [ngClass]="{'p-13': !minimise}">
+                <div *ngIf="!minimise && !closed"><p class="font-24 font-merri fw-600 color-accent grab" style="line-height: 1.2;">{{card.title}}</p></div>
+                <div *ngIf="!minimise && !closed" class="mb2">
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip [selectable]=false> <p class="mb0">Schizoaffective disorder</p> </mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">broken promise</p></mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">racism</p></mat-chip>
+                        <mat-chip [selectable]=false><p class="mb0">psychosis</p></mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div>
+                <div *ngIf="!closed" [ngClass]="{'visible': !loading,'invisible': loading}" style="display: inline-block; padding-bottom: 7px; padding-left: 2px;">
+                    <mat-icon class="color-accent right pointer" (click) = "onClickMinimise()">{{expandMore}}</mat-icon>
+                </div>
+                <div *ngIf="!closed" id="waveform" class="pointer" style="display: inline-block; width: 228px;"></div>
+                <mat-icon *ngIf="!loading" class="font-36 pointer color-accent-play" style="display: inline-block" (click)="onPlayStopPressed($event.target)">{{musicButton}}</mat-icon>
+                <!-- <p *ngIf = "wave" class="mb0 pr1 pt2 font-12 fw-600 theme-text-color-prim">
+                    {{duration}}
+                </p> -->
+            </div>
+            <div *ngIf="loading">
+                <mat-progress-bar mode="buffer" class="buffer-position"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
+</div>

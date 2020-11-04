@@ -68,10 +68,24 @@
     font-size: $font-size;
     line-height: $line-height;
     margin: 0;
-    -webkit-line-clamp: $card-lines-to-show;
+    -webkit-line-clamp: $header-lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.play{
+    position: absolute;
+    bottom: 20px;
+    right: 13px;
+    font-size: 36px;
+}
+.user-d{
+    position: absolute;
+    font-size: 9px;
+    top: 3px;
+    left: 25px;
+    text-align: center;
+    font-weight: 400;
 }
 .card-elpis{
     margin: 0;
