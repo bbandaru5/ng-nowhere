@@ -1,6 +1,6 @@
 <div *ngIf="played" class="fixed">
     <!-- cdkDrag cdkDragRootElement=".fixed" cdkDragHandle> -->
-       <div style="display: inline-block;"><mat-icon class="theme-text-color-prim right pointer mb-6 mr-1" (click) = "onClickClosed()">{{chevron}}</mat-icon> </div>
+       <div style="display: inline-block; margin-bottom: -1px;"><mat-icon class="theme-text-color-prim right pointer mr-1" (click) = "onClickClosed()">{{chevron}}</mat-icon> </div>
        <div class="card-bg" style="display: inline-block;" [ngClass]="{'w-310': !closed,'w-54': closed}">
            <div>
                <div [ngClass]="{'p-13': !minimise, 'p-0': closed}">
@@ -15,13 +15,13 @@
                    </div>
                </div>
                <div>
-                   <div *ngIf="!closed" [ngClass]="{'visible': !loading,'invisible': loading}" style="display: inline-block; padding-bottom: 5px; padding-left: 2px;">
+                   <div *ngIf="!closed" [ngClass]="{'visible': !loading,'invisible': loading}" style="display: inline-block; padding-left: 4px;">
                        <mat-icon class="color-accent right pointer" (click) = "onClickMinimise()">{{expandMore}}</mat-icon>
                    </div>
                    <div *ngIf="!closed" [ngClass]="{'visible': minimise,'invisible': !minimise}" class="pointer color-accent" (click) = "onClickMinimise()" style="display: inline-block; width: 228px;">
-                    <p class="mb-7 title-elpis">{{card.title}}</p>
+                    <p class="mb-2 title-elpis">{{card.title}}</p>
                 </div>
-                   <mat-icon *ngIf="!loading" class="font-36 pointer color-accent" style="display: inline-block" (click)="onPlayStopPressed($event.target)">{{musicButton}}</mat-icon>
+                   <mat-icon *ngIf="!loading" class="font-24 pointer color-accent music-padd" style="display: inline-block" (click)="onPlayStopPressed($event.target)">{{musicButton}}</mat-icon>
                    <!-- <p *ngIf = "wave" class="mb0 pr1 pt2 font-12 fw-600 theme-text-color-prim">
                        {{duration}}
                    </p> -->

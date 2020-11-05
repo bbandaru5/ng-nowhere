@@ -50,29 +50,28 @@ export class AudioFloatInfoComponent implements OnInit, OnDestroy {
     this.closed = false;
     this.chevron = "chevron_right"
     this.url = "assets/mp3/sample.mp3";
-    this.musicButton = "stop_circle_filled";
+    this.musicButton = "stop";
     this.duration = "1:00";
     this.expandMore = "expand_more"
     this.card = this.data.card;
     this.loading = false;
-    this.cdr.detectChanges();
     setTimeout(()=>{
       this.onClickClosed();
       this.cdr.detectChanges();
-      clearInterval();
-    },3000);
+    },5000);
+    this.cdr.detectChanges();
   }
   onPlayStopPressed(button: HTMLButtonElement){
     if (button.textContent!.trim() === 'not_started' && !this.loading) {
       this.musicButton = "pause_circle_filled";
       button.textContent = 'pause_circle_filled';
       this.onPlayPressed();
-    }else if(button.textContent!.trim() === 'play_circle_filled'){
+    }else if(button.textContent!.trim() === 'play'){
       this.messageService.sendMessage({play : true});
-      button.textContent = 'stop_circle_filled';
+      button.textContent = 'stop';
     }else{
       this.played = false;
-      button.textContent = 'play_circle_filled'
+      button.textContent = 'play'
       this.messageService.sendMessage({play : false});
       this.onPausePressed();
     }

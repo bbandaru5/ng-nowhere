@@ -78,5 +78,10 @@
     .color-accent-play{
         color: mat-color($primary, darker) !important;
     }
-    
+    .music-padd{
+        display: inline-block;
+        padding-left: 6px !important;
+        padding-top: 7px;
+        margin-bottom: 20px;
+    }
 }    

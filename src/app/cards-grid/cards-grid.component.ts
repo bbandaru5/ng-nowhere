@@ -52,10 +52,10 @@ export class CardsGridComponent implements OnInit, AfterViewChecked {
   }
   ngAfterViewChecked(){
     if(this.init){
-      for(let i=0;i<=100;i++){
-        this.masonry.layout(); 
-      }
-      this.init = false;
+      let id = setTimeout(()=>{
+        if(this.masonry)
+          this.masonry.layout();
+      },100);
     }
   }
   updateCard(input){

@@ -46,6 +46,13 @@
         cursor: pointer;
         display: inline;
     }
+    .play-album{
+        position: absolute;
+        display: inline !important;
+        bottom: 20px;
+        right: 13px;
+        font-size: 36px;
+    }
     .card-elpis{
         width: 100%;;
     }
@@ -75,6 +82,13 @@
 }
 .play{
     position: absolute;
+    bottom: 20px;
+    right: 13px;
+    font-size: 36px;
+}
+.play-album{
+    position: absolute;
+    display: none;
     bottom: 20px;
     right: 13px;
     font-size: 36px;
