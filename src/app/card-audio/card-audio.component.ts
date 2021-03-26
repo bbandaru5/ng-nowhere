@@ -1,9 +1,9 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AUDIO_CONTEXT } from '@ng-web-apis/audio';
 import { NgxMasonryComponent } from 'ngx-masonry';
 import { Subscription } from 'rxjs';
 import { AudioCardModalComponent } from '../audio-card-modal/audio-card-modal.component';
+import { AUDIO_CONTEXT } from '../custom-wave/tokens/audio-context';
 import { CommunicationService } from '../shared/communication.service';
 import { ThemingService } from '../theming.service';
 
@@ -22,7 +22,6 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     source: AudioScheduledSourceNode;
     selectedChain = 'dry';
     selectedSource = 'buffer';
-    audioBackgroundColor = 'rgb(224, 217, 210)';
     gain = 1;
     pan = 0;
     delayTime = 1;
@@ -37,9 +36,10 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     curve = makeDistortionCurve(this.distortion);
     started = true;
     readonly real = [0, 0, 1, 0, 1];
-
+    isSafari = false;
     pulseWidth = 158;
-
+    stopped= false;
+    discImage;
 
     constructor(@Inject(AUDIO_CONTEXT) private readonly context: AudioContext, 
     private themingService: ThemingService,
@@ -49,24 +49,35 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
         this.subscription = communicationService.getMessage().subscribe(message=>{
             if(this.source){
                 if(message.play === true){
+                    this.stopped = false;
                     this.source.start();        
                 }else if(message.play === false){
-                    this.source.stop();    
+                    // if(!this.stopped)
+                        // this.source.stop(); 
+                    this.show = false;
+                    this.card.show = false;
+                    this.buffers[0] = Date.now();  
+                    this.stopped = true;
+                    cdRef.detectChanges();
                 }
             }
         });
      }
 
     ngOnInit(): void {
+        if(this.getBrowserName() === 'safari'){
+            this.isSafari = true;
+        }
         this.show = this.card.show;
         if(window.innerWidth > 380){
             this.pulseWidth = 169
         }
         this.updateTheme();
-        this.context.resume();
     }
     ngOnDestroy(){
         this.subscription.unsubscribe();
+        //this.source.stop();
+        this.communicationService.sendMessage({showFloatAudioPlayer: false});
     }
     get distortionCompensation(): number {
         return 1.2 - this.distortion / 20;
@@ -77,9 +88,21 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
         this.distortion = distortion;
         this.curve = makeDistortionCurve(distortion);
     }
-
+    onClickPlayButton(button: HTMLButtonElement){
+        if (button.textContent!.trim() === 'not_started') {
+            this.communicationService.sendMessage({showFloatAudioPlayer: true});
+            this.communicationService.sendMessage({ loaded: false });
+            this.stopped = false;
+            button.textContent = "highlight_off";
+        }else{
+            button.textContent = "not_started";
+            this.stopped = true;
+            this.communicationService.sendMessage({showFloatAudioPlayer: false});
+        }
+    }
     onClick(source: AudioScheduledSourceNode, button: HTMLButtonElement) {
         if (button.textContent!.trim() === 'not_started') {
+            this.stopped = false;
             button.textContent = 'highlight_off';
             source.start();
             this.source = source;
@@ -96,7 +119,8 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     ngAfterViewInit() {
         this.updateTheme();
         this.show = this.card.show;
-        this.cdRef.detectChanges();   
+        this.cdRef.detectChanges();  
+        this.context.resume(); 
     }
     ngAfterViewChecked(): void{
         this.show = this.card.show;
@@ -105,10 +129,12 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     }
     updateTheme(){
     if(this.themingService.theme.value === 'light-theme'){
-        this.audioBackgroundColor = 'rgb(224, 217, 210)';
-            }else{
-        this.audioBackgroundColor = 'rgb(38, 39, 43)';
-        }
+        this.discImage = "assets/images/disc-light-mode.svg";
+        this.cdRef.detectChanges();
+    }else{
+        this.discImage = "assets/images/disc-dark-mode.svg";
+        this.cdRef.detectChanges();
+    }
     }
     onTimeDomain(array: Uint8Array, canvas: HTMLCanvasElement) {
         const canvasCtx = canvas.getContext('2d');
@@ -139,6 +165,7 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
     showPlay(){
         this.show = true;
         this.card.show = true;
+        this.stopped = true;
         this.showAudioCard.emit(this.card);
     }
     onClickAudioCard1(){
@@ -152,7 +179,25 @@ export class CardAudioComponent implements OnInit, AfterViewChecked, AfterViewIn
             data: { "card": this.card}
           });
       }
-    
+    public getBrowserName() {
+    const agent = window.navigator.userAgent.toLowerCase()
+    switch (true) {
+            case agent.indexOf('edge') > -1:
+            return 'edge';
+            case agent.indexOf('opr') > -1 && !!(<any>window).opr:
+            return 'opera';
+            case agent.indexOf('chrome') > -1 && !!(<any>window).chrome:
+            return 'chrome';
+            case agent.indexOf('trident') > -1:
+            return 'ie';
+            case agent.indexOf('firefox') > -1:
+            return 'firefox';
+            case agent.indexOf('safari') > -1:
+            return 'safari';
+            default:
+            return 'other';
+        }
+    }
 }
 function makeDistortionCurve(amount: number): Float32Array {
     const samples = 44100;

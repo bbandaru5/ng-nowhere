@@ -1,30 +1,38 @@
 <div *ngIf="show">
-    
-<button *ngIf="!started; else graph">Start AudioContext</button>
+<div *ngIf="!isSafari">
+    <button *ngIf="!started; else graph">Start AudioContext</button>
 
-<ng-template #graph>
-    <section>
-        <ng-container [ngSwitch]="selectedSource">
-            <ng-container *ngSwitchCase="'buffer'">
-                <p class="center font-12 theme-text-color-sec user-d" > *user discretion is advised</p>
-                <mat-icon
-                    class="play mt1 mr1 theme-text-color-prim"
-                    *ngFor="let _ of buffers"
-                    #source="AudioNode"
-                    waAudioBufferSourceNode
-                    buffer="assets/mp3/sample.mp3"
-                    [loop]="true"
-                    (click)="onClick(source, $event.target)">not_started<ng-container
-                        waAnalyserNode
-                        (timeByte$)="onTimeDomain($event, canvas)">
-                        <ng-container [waOutput]="chain || fallback"></ng-container>
-                    </ng-container>
-                </mat-icon>
+    <ng-template #graph>
+        <section>
+            <ng-container [ngSwitch]="selectedSource">
+                <ng-container *ngSwitchCase="'buffer'">
+                    <p class="center font-12 theme-text-color-sec user-d" > *user discretion is advised</p>
+                    <mat-icon
+                        class="play mt1 mr1 theme-text-color-prim"
+                        *ngFor="let _ of buffers"
+                        #source="AudioNode"
+                        waAudioBufferSourceNode
+                        buffer="assets/mp3/sample.mp3"
+                        [loop]="true"
+                        (click)="onClick(source, $event.target)">not_started<ng-container
+                            waAnalyserNode
+                            (timeByte$)="onTimeDomain($event, canvas)">
+                            <ng-container [waOutput]="chain || fallback"></ng-container>
+                        </ng-container>
+                    </mat-icon>
+                </ng-container>
             </ng-container>
-        </ng-container>
-            <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120" width="{{pulseWidth}}" class="left pt-24" (click) = "onClickAudioCard1()"></canvas>
-    </section>
-</ng-template>
+                <canvas #fallback="AudioNode" #canvas waAudioDestinationNode height="120" width="{{pulseWidth}}" class="left pt-24" (click) = "onClickAudioCard1()"></canvas>
+        </section>
+    </ng-template>
+</div>  
+<div *ngIf = "isSafari">
+    <div>
+        <img class="disc" [ngClass]="{'rotate': !stopped}" [src]="discImage" alt="disc">
+    </div>
+    <mat-icon
+        class="play mt1 mr1 theme-text-color-prim" (click)="onClickPlayButton($event.target)">not_started</mat-icon>
+</div>  
 </div>
 <div *ngIf="!show">
     <div class="d-flex text-content" style="padding-left: 24px;">
@@ -38,7 +46,7 @@
                     <mat-chip> <p class="chip-elpis">Schizoaffective disorder</p> </mat-chip>
                     <mat-chip><p class="chip-elpis">broken promise</p></mat-chip>
                     <mat-chip><p class="chip-elpis">racism</p></mat-chip>
-                    <mat-chip><p class="chip-elpis">psychosis</p></mat-chip>
+                    <mat-chip class="deskContent" ><p class="chip-elpis">psychosis</p></mat-chip>
                 </mat-chip-list>
             </div>
         </div>

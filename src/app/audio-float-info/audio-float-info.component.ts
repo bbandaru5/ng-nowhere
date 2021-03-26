@@ -11,7 +11,7 @@ export class AudioFloatInfoComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   loading = true;
   @Input() data;
-  minimise = false;
+  minimise = true;
   closed = false;
   chevron = "chevron_right"
   url = "assets/mp3/sample.mp3";
@@ -52,13 +52,9 @@ export class AudioFloatInfoComponent implements OnInit, OnDestroy {
     this.url = "assets/mp3/sample.mp3";
     this.musicButton = "stop";
     this.duration = "1:00";
-    this.expandMore = "expand_more"
+    this.expandMore = "expand_less"
     this.card = this.data.card;
     this.loading = false;
-    setTimeout(()=>{
-      this.onClickClosed();
-      this.cdr.detectChanges();
-    },5000);
     this.cdr.detectChanges();
   }
   onPlayStopPressed(button: HTMLButtonElement){

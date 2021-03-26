@@ -1,23 +1,33 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
+import { CommunicationService } from '../shared/communication.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messageService: CommunicationService,
+    private cdRef:ChangeDetectorRef) { 
+    this.subscription =  this.messageService.obscenetiy().subscribe(message => {
+      console.log("ujjjn")
+      this.obscenity = message;
+      this.cdRef.detectChanges();
+  });
+  }
   @Input()
   type : string;
   @Input() card;
   card1;
   card2;
   readMore = true;
+  obscenity = true;
   @Output() showAudioCard = new EventEmitter();
   @Output() reloadCards = new EventEmitter();
-
+  subscription: Subscription;
   position = new FormControl("below");
   ngOnInit(): void {
     if(this.card.type ==="audio"){

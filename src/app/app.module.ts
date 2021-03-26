@@ -12,7 +12,6 @@ import { CardsGridComponent } from './cards-grid/cards-grid.component'
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemingService } from './theming.service';
-import { WebAudioModule } from '@ng-web-apis/audio';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CardAudioComponent } from './card-audio/card-audio.component';
@@ -23,6 +22,9 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AudioCardComponent } from './audio-card/audio-card.component';
 import { CommunicationService } from './shared/communication.service';
 import { AudioFloatInfoComponent } from './audio-float-info/audio-float-info.component';
+import { CustWebAudioModule } from './custom-wave/module'
+import { PipesModule } from './pipes/pipes.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,10 +43,11 @@ import { AudioFloatInfoComponent } from './audio-float-info/audio-float-info.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WebAudioModule,
     MaterialModule,
     NgxMasonryModule,
+    CustWebAudioModule,
     FormsModule,
+    PipesModule,
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({appId: 'nowhere'}),
   ],

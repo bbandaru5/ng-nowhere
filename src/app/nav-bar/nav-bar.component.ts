@@ -1,5 +1,7 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ThemingService } from '../theming.service';
+import { CommunicationService } from '../shared/communication.service';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -8,7 +10,8 @@ import { ThemingService } from '../theming.service';
 })
 export class NavBarComponent implements OnInit, AfterViewChecked, AfterViewInit {
 
-  constructor(private themingService: ThemingService,private cdRef:ChangeDetectorRef) { }
+  constructor(private themingService: ThemingService,private cdRef:ChangeDetectorRef, private communicationService: CommunicationService) { 
+  }
   hearUrl = 'assets/images/hear.svg';
   hearSelectedUrl = 'assets/images/hear-o.svg';
   logoUrl = 'assets/images/logo-dark.svg';
@@ -20,6 +23,7 @@ export class NavBarComponent implements OnInit, AfterViewChecked, AfterViewInit 
   expandIcon = "expand_more"
   isDarkMode = false;
   showMenu = false;
+  obscenity = true;
   userLinks = [
     {
       name: "Change Password",
@@ -46,6 +50,12 @@ export class NavBarComponent implements OnInit, AfterViewChecked, AfterViewInit 
   }
   changed($event){
     this.changeTheme($event);
+    this.showMenu = false;
+    this.expandIcon = this.showMenu?"expand_less":"expand_more";
+  }
+  changeObscenity($event){
+    this.obscenity = $event.checked;
+    this.communicationService.changeObscenetiy(this.obscenity);
     this.showMenu = false;
     this.expandIcon = this.showMenu?"expand_less":"expand_more";
   }

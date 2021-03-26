@@ -27,7 +27,9 @@
     <div class="dropdown right mr2" *ngIf="showMenu">
         <mat-slide-toggle class="dark-text" [(ngModel)]="isDarkMode" (change)="changed($event)">Dark Mode</mat-slide-toggle>
     </div>
-
+    <div class="dropdown right mr2" *ngIf="showMenu">
+        <mat-slide-toggle class="dark-text" [(ngModel)]="obscenity" (change)="changeObscenity($event)">Obscenity</mat-slide-toggle>
+    </div>
     <div class="bg-grad" style="z-index: -1;" [ngClass]="{'nav-back-dark-grad':isDarkMode, 'nav-back-light-grad': !isDarkMode}"></div>
 
 </nav>

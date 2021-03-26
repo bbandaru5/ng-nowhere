@@ -1,6 +1,6 @@
 <div *ngIf="played" class="fixed">
  <!-- cdkDrag cdkDragRootElement=".fixed" cdkDragHandle> -->
-    <div *ngIf="!closed" style="display: inline-block;"><mat-icon class="theme-text-color-prim right pointer mb-6 mr-1 chevron" (click) = "onClickClosed()">cancel</mat-icon> </div>
+    <div *ngIf="false" style="display: inline-block;"><mat-icon class="theme-text-color-prim right pointer mb-6 mr-1 chevron" (click) = "onClickClosed()">cancel</mat-icon> </div>
     <div class="card-bg" style="display: inline-block;" [ngClass]="{'w-310': !closed,'w-54': closed}">
         <div>
             <div [ngClass]="{'p-13': !minimise}">
@@ -25,7 +25,7 @@
                 </p> -->
             </div>
             <div *ngIf="loading">
-                <mat-progress-bar mode="buffer" class="buffer-position"></mat-progress-bar>
+                <mat-progress-bar mode="buffer" class="buffer-position-1"></mat-progress-bar>
             </div>
         </div>
     </div>

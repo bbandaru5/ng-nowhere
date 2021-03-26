@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import WaveSurfer from 'wavesurfer.js';
 import { CommunicationService } from '../shared/communication.service';
+import { ThemingService } from '../theming.service';
 
 @Component({
   selector: 'app-audio-card',
@@ -14,38 +15,57 @@ export class AudioCardComponent implements OnInit, OnDestroy {
   loading = true;
   @Input() data;
   minimise = true;
+  played = false;
   closed = false;
   chevron = "chevron_left"
   url = "assets/mp3/sample.mp3";
   musicButton = "not_started";
   duration = "1:00";
   expandMore = "expand_less"
-  constructor(private cdr: ChangeDetectorRef, private messageService: CommunicationService) { 
+  progressColor = "#7e7e7e";
+  waveColor = "#d6ccc1";
+  constructor(private cdr: ChangeDetectorRef, private messageService: CommunicationService,private themingService: ThemingService) { 
+    this.updateTheme(); 
     this.subscription =  this.messageService.getMessage().subscribe(message => {
-      if (message.showFloatAudioPlayer) {
+      if (message.showFloatAudioPlayer === true) {
+        if(this.played){
+          this.destroyPlayer();
+        }
         this.played = true;
         console.log(message);
         this.initialisePlayer();
-      } else {
-        if(this.wave){
-          this.wave.stop();
-          this.wave.destroy();
-        }
-        this.onClickClosed();
-        this.played =false;
+      } else if(message.showFloatAudioPlayer === false){
+        this.destroyPlayer();
       }
     });
   }
-  played = false;
+  updateTheme(){
+    if(this.themingService.theme.value === 'light-theme'){
+      this.progressColor = "#d6ccc1";
+      this.waveColor = "#706d69";
+    }else{
+        this.progressColor = "#0b0b0b";
+        this.waveColor = "#929395";
+    }
+  }
+  destroyPlayer(){
+    if(this.wave){
+      this.wave.stop();
+      this.wave.destroy();
+    }
+    this.onClickClosed();
+    this.played =false;
+  }
   card: any;
   init = true;
-  ngOnInit(): void {this.minimise = true;
-   
+  ngOnInit(): void {
+    this.minimise = true;
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
   initialisePlayer(){
+    this.updateTheme(); 
     this.wave = null;
     this.minimise = true;
     this.loading = true;
@@ -69,16 +89,18 @@ generateWaveform(): void {
   Promise.resolve(null).then(() => {
     this.wave = WaveSurfer.create({
       container: '#waveform',
-      waveColor: '#f47037',
+      waveColor: this.waveColor,
       hideScrollbar: true,
       height:36,
       responsive:true,
-      progressColor: 'gray',
+      progressColor: this.progressColor,
     });
     this.wave.hideScrollbar = true;
     this.wave.on('ready', () => {
       this.loading = false;
       this.getDuration();
+      this.wave.play();
+      this.musicButton = "pause_circle_filled";
       this.cdr.detectChanges();
     });
   });

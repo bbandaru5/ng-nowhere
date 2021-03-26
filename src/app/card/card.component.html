@@ -24,7 +24,9 @@
                     [matTooltipShowDelay]="500" [matTooltipPosition]="position.value"
                     [matTooltipHideDelay]="1000"> {{card.userId}}</a>  
 
-                <h2 class="font-merri  theme-text-color-prim pr2 fw-600" style="text-align: initial;padding-left: 20px; padding-top: 23px;">{{card.title}}</h2>
+                <h2 *ngIf="obscenity"class="font-merri  theme-text-color-prim pr2 fw-600" style="text-align: initial;padding-left: 20px; padding-top: 23px;">{{card.title | obscenity}}</h2>
+                <h2 *ngIf="!obscenity" class="font-merri  theme-text-color-prim pr2 fw-600" style="text-align: initial;padding-left: 20px; padding-top: 23px;">{{card.title}}</h2>
+
                 <div class="pr1 pb1" style="padding-left: 25px;">
                     <mat-chip-list aria-label="Fish selection">
                         <mat-chip [selectable]=false> <p class="mb0">Schizoaffective disorder</p> </mat-chip>
@@ -33,7 +35,8 @@
                         <mat-chip [selectable]=false><p class="mb0">racism</p></mat-chip>
                     </mat-chip-list>
                 </div>
-                <p class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;" [ngClass]="{'card-elps': readMore}">{{card.desc}}</p>
+                <p *ngIf="obscenity" class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;" [ngClass]="{'card-elps': readMore}">{{card.desc | obscenity}}</p>
+                <p *ngIf="!obscenity" class="font-merri theme-text-color-sec mb0 font-14" style="padding-right: 20px; padding-left: 25px; text-align: initial;" [ngClass]="{'card-elps': readMore}">{{card.desc}}</p>
                 <p *ngIf = "readMore" class="font-merri font-14 theme-text-color-prim underline" (click) = "onClickReadMore()">read more..</p>
                 <div class="d-felx justify-content-end mr2 pb1" style="text-align: end;">
                     <mat-icon class="theme-text-color-sec pointer mr1 mat-reply"> reply</mat-icon>

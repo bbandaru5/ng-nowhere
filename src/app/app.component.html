@@ -3,6 +3,7 @@
 
 <div class="content">
   <router-outlet></router-outlet>
-  <app-audio-float-info [data]="data"></app-audio-float-info>
+  <app-audio-float-info *ngIf= "!isSafari" [data]="data"></app-audio-float-info>
+  <app-audio-card *ngIf= "isSafari" [data]="data"></app-audio-card>
 </div>
 </body>
