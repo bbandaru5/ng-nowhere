@@ -1,29 +1,17 @@
-# README #
-
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+> social newtwork(Anuglar project)
 
-### How do I get set up? ###
+[demo](https://nowhere-55.web.app/)
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## Build Setup
 
-### Contribution guidelines ###
+``` bash
+# install dependencies
+$ npm install 
 
-* Writing tests
-* Code review
-* Other guidelines
+# serve with hot reload at localhost:3000
+$ npm start
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+# build for production and launch server
+$ npm run build --prod
