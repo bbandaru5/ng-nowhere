@@ -1,16 +1,18 @@
 ### What is this repository for? ###
 
-> social newtwork(Anuglar project)
+> Social Network
 
 [demo](https://nowhere-55.web.app/)
 
 ## Build Setup
 
+> Angular Project 
+
 ``` bash
 # install dependencies
 $ npm install 
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:4200
 $ npm start
 
 # build for production and launch server
