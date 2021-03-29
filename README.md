@@ -1,5 +1,5 @@
-> Social Network
-Dependencies: Audio Player - "wavesurfer.js", Pinterest like Grid - "ngx-masonry", Filtering badwords - "bad-words"
+> Social Network <br>
+> Dependencies: Audio Player - "wavesurfer.js", Pinterest like Grid - "ngx-masonry", Filtering badwords - "bad-words"
 
 [demo](https://nowhere-55.web.app/)
 
