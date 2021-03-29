@@ -1,6 +1,6 @@
 [demo link](https://nowhere-55.web.app/)
 
-> Social Network <br>
+## Social Network <br>
 > Dependencies: Audio Player - "wavesurfer.js", Pinterest like Grid - "ngx-masonry", Filtering badwords - "bad-words"
 
 ## Build Setup
