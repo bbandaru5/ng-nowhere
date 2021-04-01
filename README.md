@@ -1,29 +1,18 @@
-# README #
+[demo link](https://nowhere-55.web.app/)
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Social Network <br>
+> Dependencies: Audio Player - "wavesurfer.js", Pinterest like Grid - "ngx-masonry", Filtering badwords - "bad-words"
 
-### What is this repository for? ###
+## Build Setup
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+> Angular Project 
 
-### How do I get set up? ###
+``` bash
+# install dependencies
+$ npm install 
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+# serve with hot reload at localhost:4200
+$ npm start
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+# build for production and launch server
+$ npm run build --prod
